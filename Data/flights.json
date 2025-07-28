@@ -1,0 +1,5023 @@
+{
+    "pagination": {
+        "limit": 100,
+        "offset": 0,
+        "count": 100,
+        "total": 251291
+    },
+    "data": [
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Raipur",
+                "timezone": "Asia/Kolkata",
+                "iata": "RPR",
+                "icao": "VERP",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T08:45:00+00:00",
+                "estimated": "2025-07-05T08:45:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Chhatrapati Shivaji International (Sahar International)",
+                "timezone": "Asia/Kolkata",
+                "iata": "BOM",
+                "icao": "VABB",
+                "terminal": "2",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T10:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Atlantic",
+                "iata": "VS",
+                "icao": "VIR"
+            },
+            "flight": {
+                "number": "9534",
+                "iata": "VS9534",
+                "icao": "VIR9534",
+                "codeshared": {
+                    "airline_name": "indigo",
+                    "airline_iata": "6e",
+                    "airline_icao": "igo",
+                    "flight_number": "594",
+                    "flight_iata": "6e594",
+                    "flight_icao": "igo594"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Raipur",
+                "timezone": "Asia/Kolkata",
+                "iata": "RPR",
+                "icao": "VERP",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T08:10:00+00:00",
+                "estimated": "2025-07-05T08:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Indira Gandhi International",
+                "timezone": "Asia/Kolkata",
+                "iata": "DEL",
+                "icao": "VIDP",
+                "terminal": "3",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T09:45:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air India",
+                "iata": "AI",
+                "icao": "AIC"
+            },
+            "flight": {
+                "number": "2794",
+                "iata": "AI2794",
+                "icao": "AIC2794",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "15",
+                "delay": null,
+                "scheduled": "2025-07-05T14:55:00+00:00",
+                "estimated": "2025-07-05T14:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "4",
+                "baggage": null,
+                "scheduled": "2025-07-05T17:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "742",
+                "iata": "VA742",
+                "icao": "VOZ742",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "15",
+                "delay": null,
+                "scheduled": "2025-07-05T14:55:00+00:00",
+                "estimated": "2025-07-05T14:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "4",
+                "baggage": null,
+                "scheduled": "2025-07-05T17:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6605",
+                "iata": "SQ6605",
+                "icao": "SIA6605",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "742",
+                    "flight_iata": "va742",
+                    "flight_icao": "voz742"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "15",
+                "delay": null,
+                "scheduled": "2025-07-05T14:55:00+00:00",
+                "estimated": "2025-07-05T14:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "4",
+                "baggage": null,
+                "scheduled": "2025-07-05T17:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "7192",
+                "iata": "QR7192",
+                "icao": "QTR7192",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "742",
+                    "flight_iata": "va742",
+                    "flight_icao": "voz742"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "15",
+                "delay": null,
+                "scheduled": "2025-07-05T14:55:00+00:00",
+                "estimated": "2025-07-05T14:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "4",
+                "baggage": null,
+                "scheduled": "2025-07-05T17:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air India",
+                "iata": "AI",
+                "icao": "AIC"
+            },
+            "flight": {
+                "number": "7196",
+                "iata": "AI7196",
+                "icao": "AIC7196",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "742",
+                    "flight_iata": "va742",
+                    "flight_icao": "voz742"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "12",
+                "delay": null,
+                "scheduled": "2025-07-05T14:25:00+00:00",
+                "estimated": "2025-07-05T14:25:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A57",
+                "baggage": "D4",
+                "scheduled": "2025-07-05T15:55:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "415",
+                "iata": "JQ415",
+                "icao": "JST415",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "12",
+                "delay": null,
+                "scheduled": "2025-07-05T14:25:00+00:00",
+                "estimated": "2025-07-05T14:25:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A57",
+                "baggage": "D4",
+                "scheduled": "2025-07-05T15:55:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5415",
+                "iata": "QF5415",
+                "icao": "QFA5415",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "415",
+                    "flight_iata": "jq415",
+                    "flight_icao": "jst415"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Adelaide International Airport",
+                "timezone": "Australia/Adelaide",
+                "iata": "ADL",
+                "icao": "YPAD",
+                "terminal": "1",
+                "gate": "14",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "1448",
+                "iata": "VA1448",
+                "icao": "VOZ1448",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Adelaide International Airport",
+                "timezone": "Australia/Adelaide",
+                "iata": "ADL",
+                "icao": "YPAD",
+                "terminal": "1",
+                "gate": "14",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6729",
+                "iata": "SQ6729",
+                "icao": "SIA6729",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "1448",
+                    "flight_iata": "va1448",
+                    "flight_icao": "voz1448"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Adelaide International Airport",
+                "timezone": "Australia/Adelaide",
+                "iata": "ADL",
+                "icao": "YPAD",
+                "terminal": "1",
+                "gate": "14",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "4242",
+                "iata": "QR4242",
+                "icao": "QTR4242",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "1448",
+                    "flight_iata": "va1448",
+                    "flight_icao": "voz1448"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T15:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "526",
+                "iata": "VA526",
+                "icao": "VOZ526",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T15:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6705",
+                "iata": "SQ6705",
+                "icao": "SIA6705",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "526",
+                    "flight_iata": "va526",
+                    "flight_icao": "voz526"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T15:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "4268",
+                "iata": "QR4268",
+                "icao": "QTR4268",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "526",
+                    "flight_iata": "va526",
+                    "flight_icao": "voz526"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T15:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Hawaiian Airlines",
+                "iata": "HA",
+                "icao": "HAL"
+            },
+            "flight": {
+                "number": "4027",
+                "iata": "HA4027",
+                "icao": "HAL4027",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "526",
+                    "flight_iata": "va526",
+                    "flight_icao": "voz526"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "estimated": "2025-07-05T14:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T15:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air India",
+                "iata": "AI",
+                "icao": "AIC"
+            },
+            "flight": {
+                "number": "7248",
+                "iata": "AI7248",
+                "icao": "AIC7248",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "526",
+                    "flight_iata": "va526",
+                    "flight_icao": "voz526"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "8",
+                "delay": 25,
+                "scheduled": "2025-07-05T14:10:00+00:00",
+                "estimated": "2025-07-05T14:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "51",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:30:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "451",
+                "iata": "JQ451",
+                "icao": "JST451",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "8",
+                "delay": 25,
+                "scheduled": "2025-07-05T14:10:00+00:00",
+                "estimated": "2025-07-05T14:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "51",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:30:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5451",
+                "iata": "QF5451",
+                "icao": "QFA5451",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "451",
+                    "flight_iata": "jq451",
+                    "flight_icao": "jst451"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T14:00:00+00:00",
+                "estimated": "2025-07-05T14:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T16:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "879",
+                "iata": "QF879",
+                "icao": "QFA879",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T14:00:00+00:00",
+                "estimated": "2025-07-05T14:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T16:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air New Zealand",
+                "iata": "NZ",
+                "icao": "ANZ"
+            },
+            "flight": {
+                "number": "7129",
+                "iata": "NZ7129",
+                "icao": "ANZ7129",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "879",
+                    "flight_iata": "qf879",
+                    "flight_icao": "qfa879"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T14:00:00+00:00",
+                "estimated": "2025-07-05T14:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T16:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "China Eastern Airlines",
+                "iata": "MU",
+                "icao": "CES"
+            },
+            "flight": {
+                "number": "4144",
+                "iata": "MU4144",
+                "icao": "CES4144",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "879",
+                    "flight_iata": "qf879",
+                    "flight_icao": "qfa879"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T14:00:00+00:00",
+                "estimated": "2025-07-05T14:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T16:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "IndiGo",
+                "iata": "6E",
+                "icao": "IGO"
+            },
+            "flight": {
+                "number": "4776",
+                "iata": "6E4776",
+                "icao": "IGO4776",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "879",
+                    "flight_iata": "qf879",
+                    "flight_icao": "qfa879"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": null,
+                "scheduled": "2025-07-05T13:55:00+00:00",
+                "estimated": "2025-07-05T13:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "2",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "740",
+                "iata": "VA740",
+                "icao": "VOZ740",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": null,
+                "scheduled": "2025-07-05T13:55:00+00:00",
+                "estimated": "2025-07-05T13:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "2",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6611",
+                "iata": "SQ6611",
+                "icao": "SIA6611",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "740",
+                    "flight_iata": "va740",
+                    "flight_icao": "voz740"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": null,
+                "scheduled": "2025-07-05T13:55:00+00:00",
+                "estimated": "2025-07-05T13:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "2",
+                "baggage": null,
+                "scheduled": "2025-07-05T16:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "8516",
+                "iata": "QR8516",
+                "icao": "QTR8516",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "740",
+                    "flight_iata": "va740",
+                    "flight_icao": "voz740"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T13:20:00+00:00",
+                "estimated": "2025-07-05T13:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "33",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T14:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6715",
+                "iata": "SQ6715",
+                "icao": "SIA6715",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "524",
+                    "flight_iata": "va524",
+                    "flight_icao": "voz524"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T13:20:00+00:00",
+                "estimated": "2025-07-05T13:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "33",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T14:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "7132",
+                "iata": "QR7132",
+                "icao": "QTR7132",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "524",
+                    "flight_iata": "va524",
+                    "flight_icao": "voz524"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T13:20:00+00:00",
+                "estimated": "2025-07-05T13:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "33",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T14:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Hawaiian Airlines",
+                "iata": "HA",
+                "icao": "HAL"
+            },
+            "flight": {
+                "number": "4033",
+                "iata": "HA4033",
+                "icao": "HAL4033",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "524",
+                    "flight_iata": "va524",
+                    "flight_icao": "voz524"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T13:00:00+00:00",
+                "estimated": "2025-07-05T13:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Norfolk Island",
+                "timezone": "Pacific/Norfolk",
+                "iata": "NLK",
+                "icao": "YSNF",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T15:49:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "empty",
+                "iata": null,
+                "icao": null
+            },
+            "flight": {
+                "number": null,
+                "iata": null,
+                "icao": null,
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "7",
+                "delay": null,
+                "scheduled": "2025-07-05T13:00:00+00:00",
+                "estimated": "2025-07-05T13:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Avalon",
+                "timezone": "Australia/Melbourne",
+                "iata": "AVV",
+                "icao": "YMAV",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T15:15:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "631",
+                "iata": "JQ631",
+                "icao": "JST631",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "7",
+                "delay": null,
+                "scheduled": "2025-07-05T13:00:00+00:00",
+                "estimated": "2025-07-05T13:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Avalon",
+                "timezone": "Australia/Melbourne",
+                "iata": "AVV",
+                "icao": "YMAV",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T15:15:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5631",
+                "iata": "QF5631",
+                "icao": "QFA5631",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "631",
+                    "flight_iata": "jq631",
+                    "flight_icao": "jst631"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "11",
+                "delay": null,
+                "scheduled": "2025-07-05T13:00:00+00:00",
+                "estimated": "2025-07-05T13:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A54",
+                "baggage": "D4",
+                "scheduled": "2025-07-05T14:30:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5413",
+                "iata": "QF5413",
+                "icao": "QFA5413",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "413",
+                    "flight_iata": "jq413",
+                    "flight_icao": "jst413"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 6,
+                "scheduled": "2025-07-05T12:55:00+00:00",
+                "estimated": "2025-07-05T12:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "3",
+                "baggage": null,
+                "scheduled": "2025-07-05T15:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "738",
+                "iata": "VA738",
+                "icao": "VOZ738",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 6,
+                "scheduled": "2025-07-05T12:55:00+00:00",
+                "estimated": "2025-07-05T12:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "3",
+                "baggage": null,
+                "scheduled": "2025-07-05T15:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6609",
+                "iata": "SQ6609",
+                "icao": "SIA6609",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "738",
+                    "flight_iata": "va738",
+                    "flight_icao": "voz738"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 6,
+                "scheduled": "2025-07-05T12:55:00+00:00",
+                "estimated": "2025-07-05T12:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "3",
+                "baggage": null,
+                "scheduled": "2025-07-05T15:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "8480",
+                "iata": "QR8480",
+                "icao": "QTR8480",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "738",
+                    "flight_iata": "va738",
+                    "flight_icao": "voz738"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "estimated": "2025-07-05T12:50:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Canberra",
+                "timezone": "Australia/Sydney",
+                "iata": "CBR",
+                "icao": "YSCB",
+                "terminal": null,
+                "gate": "7",
+                "baggage": null,
+                "scheduled": "2025-07-05T14:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "1690",
+                "iata": "VA1690",
+                "icao": "VOZ1690",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "estimated": "2025-07-05T12:50:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Canberra",
+                "timezone": "Australia/Sydney",
+                "iata": "CBR",
+                "icao": "YSCB",
+                "terminal": null,
+                "gate": "7",
+                "baggage": null,
+                "scheduled": "2025-07-05T14:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6380",
+                "iata": "SQ6380",
+                "icao": "SIA6380",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "1690",
+                    "flight_iata": "va1690",
+                    "flight_icao": "voz1690"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T12:20:00+00:00",
+                "estimated": "2025-07-05T12:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "35",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T13:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "520",
+                "iata": "VA520",
+                "icao": "VOZ520",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T12:20:00+00:00",
+                "estimated": "2025-07-05T12:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "35",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T13:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6727",
+                "iata": "SQ6727",
+                "icao": "SIA6727",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "520",
+                    "flight_iata": "va520",
+                    "flight_icao": "voz520"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T12:20:00+00:00",
+                "estimated": "2025-07-05T12:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "35",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T13:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "6372",
+                "iata": "QR6372",
+                "icao": "QTR6372",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "520",
+                    "flight_iata": "va520",
+                    "flight_icao": "voz520"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T12:20:00+00:00",
+                "estimated": "2025-07-05T12:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "35",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T13:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Hawaiian Airlines",
+                "iata": "HA",
+                "icao": "HAL"
+            },
+            "flight": {
+                "number": "4017",
+                "iata": "HA4017",
+                "icao": "HAL4017",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "520",
+                    "flight_iata": "va520",
+                    "flight_icao": "voz520"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "15",
+                "delay": null,
+                "scheduled": "2025-07-05T12:10:00+00:00",
+                "estimated": "2025-07-05T12:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A53",
+                "baggage": "D4",
+                "scheduled": "2025-07-05T13:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "409",
+                "iata": "JQ409",
+                "icao": "JST409",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "15",
+                "delay": null,
+                "scheduled": "2025-07-05T12:10:00+00:00",
+                "estimated": "2025-07-05T12:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A53",
+                "baggage": "D4",
+                "scheduled": "2025-07-05T13:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5409",
+                "iata": "QF5409",
+                "icao": "QFA5409",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "409",
+                    "flight_iata": "jq409",
+                    "flight_icao": "jst409"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T12:00:00+00:00",
+                "estimated": "2025-07-05T12:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Mineta San Jose International Airport",
+                "timezone": "America/Los_Angeles",
+                "iata": "SJC",
+                "icao": "KSJC",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T07:30:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "NetJets Aviation",
+                "iata": "1I",
+                "icao": "EJA"
+            },
+            "flight": {
+                "number": null,
+                "iata": "1I",
+                "icao": "EJA",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:55:00+00:00",
+                "estimated": "2025-07-05T11:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Auckland International",
+                "timezone": "Pacific/Auckland",
+                "iata": "AKL",
+                "icao": "NZAA",
+                "terminal": "I",
+                "gate": "4",
+                "baggage": "ITB4",
+                "scheduled": "2025-07-05T17:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air New Zealand",
+                "iata": "NZ",
+                "icao": "ANZ"
+            },
+            "flight": {
+                "number": "188",
+                "iata": "NZ188",
+                "icao": "ANZ188",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:55:00+00:00",
+                "estimated": "2025-07-05T11:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Auckland International",
+                "timezone": "Pacific/Auckland",
+                "iata": "AKL",
+                "icao": "NZAA",
+                "terminal": "I",
+                "gate": "4",
+                "baggage": "ITB4",
+                "scheduled": "2025-07-05T17:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "7088",
+                "iata": "VA7088",
+                "icao": "VOZ7088",
+                "codeshared": {
+                    "airline_name": "air new zealand",
+                    "airline_iata": "nz",
+                    "airline_icao": "anz",
+                    "flight_number": "188",
+                    "flight_iata": "nz188",
+                    "flight_icao": "anz188"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:55:00+00:00",
+                "estimated": "2025-07-05T11:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Auckland International",
+                "timezone": "Pacific/Auckland",
+                "iata": "AKL",
+                "icao": "NZAA",
+                "terminal": "I",
+                "gate": "4",
+                "baggage": "ITB4",
+                "scheduled": "2025-07-05T17:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "4215",
+                "iata": "SQ4215",
+                "icao": "SIA4215",
+                "codeshared": {
+                    "airline_name": "air new zealand",
+                    "airline_iata": "nz",
+                    "airline_icao": "anz",
+                    "flight_number": "188",
+                    "flight_iata": "nz188",
+                    "flight_icao": "anz188"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 11,
+                "scheduled": "2025-07-05T11:55:00+00:00",
+                "estimated": "2025-07-05T11:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "1",
+                "baggage": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "736",
+                "iata": "VA736",
+                "icao": "VOZ736",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 11,
+                "scheduled": "2025-07-05T11:55:00+00:00",
+                "estimated": "2025-07-05T11:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "1",
+                "baggage": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6615",
+                "iata": "SQ6615",
+                "icao": "SIA6615",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "736",
+                    "flight_iata": "va736",
+                    "flight_icao": "voz736"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 11,
+                "scheduled": "2025-07-05T11:55:00+00:00",
+                "estimated": "2025-07-05T11:55:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "1",
+                "baggage": null,
+                "scheduled": "2025-07-05T14:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "7190",
+                "iata": "QR7190",
+                "icao": "QTR7190",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "736",
+                    "flight_iata": "va736",
+                    "flight_icao": "voz736"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "593",
+                "iata": "QF593",
+                "icao": "QFA593",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Hawaiian Airlines",
+                "iata": "HA",
+                "icao": "HAL"
+            },
+            "flight": {
+                "number": "3490",
+                "iata": "HA3490",
+                "icao": "HAL3490",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "593",
+                    "flight_iata": "qf593",
+                    "flight_icao": "qfa593"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Cathay Pacific",
+                "iata": "CX",
+                "icao": "CPA"
+            },
+            "flight": {
+                "number": "9017",
+                "iata": "CX9017",
+                "icao": "CPA9017",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "593",
+                    "flight_iata": "qf593",
+                    "flight_icao": "qfa593"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "American Airlines",
+                "iata": "AA",
+                "icao": "AAL"
+            },
+            "flight": {
+                "number": "7301",
+                "iata": "AA7301",
+                "icao": "AAL7301",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "593",
+                    "flight_iata": "qf593",
+                    "flight_icao": "qfa593"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "IndiGo",
+                "iata": "6E",
+                "icao": "IGO"
+            },
+            "flight": {
+                "number": "4878",
+                "iata": "6E4878",
+                "icao": "IGO4878",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "593",
+                    "flight_iata": "qf593",
+                    "flight_icao": "qfa593"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air New Zealand",
+                "iata": "NZ",
+                "icao": "ANZ"
+            },
+            "flight": {
+                "number": "7593",
+                "iata": "NZ7593",
+                "icao": "ANZ7593",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "593",
+                    "flight_iata": "qf593",
+                    "flight_icao": "qfa593"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Emirates",
+                "iata": "EK",
+                "icao": "UAE"
+            },
+            "flight": {
+                "number": "5688",
+                "iata": "EK5688",
+                "icao": "UAE5688",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "593",
+                    "flight_iata": "qf593",
+                    "flight_icao": "qfa593"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "518",
+                "iata": "VA518",
+                "icao": "VOZ518",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6707",
+                "iata": "SQ6707",
+                "icao": "SIA6707",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "518",
+                    "flight_iata": "va518",
+                    "flight_icao": "voz518"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "7152",
+                "iata": "QR7152",
+                "icao": "QTR7152",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "518",
+                    "flight_iata": "va518",
+                    "flight_icao": "voz518"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "21",
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "41",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Hawaiian Airlines",
+                "iata": "HA",
+                "icao": "HAL"
+            },
+            "flight": {
+                "number": "4032",
+                "iata": "HA4032",
+                "icao": "HAL4032",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "518",
+                    "flight_iata": "va518",
+                    "flight_icao": "voz518"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "49",
+                "baggage": null,
+                "scheduled": "2025-07-05T13:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "439",
+                "iata": "JQ439",
+                "icao": "JST439",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T11:20:00+00:00",
+                "estimated": "2025-07-05T11:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "49",
+                "baggage": null,
+                "scheduled": "2025-07-05T13:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5439",
+                "iata": "QF5439",
+                "icao": "QFA5439",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "439",
+                    "flight_iata": "jq439",
+                    "flight_icao": "jst439"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "12",
+                "delay": 35,
+                "scheduled": "2025-07-05T11:05:00+00:00",
+                "estimated": "2025-07-05T11:05:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Adelaide International Airport",
+                "timezone": "Australia/Adelaide",
+                "iata": "ADL",
+                "icao": "YPAD",
+                "terminal": "1",
+                "gate": "19",
+                "baggage": null,
+                "scheduled": "2025-07-05T13:15:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "499",
+                "iata": "JQ499",
+                "icao": "JST499",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "12",
+                "delay": 35,
+                "scheduled": "2025-07-05T11:05:00+00:00",
+                "estimated": "2025-07-05T11:05:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Adelaide International Airport",
+                "timezone": "Australia/Adelaide",
+                "iata": "ADL",
+                "icao": "YPAD",
+                "terminal": "1",
+                "gate": "19",
+                "baggage": null,
+                "scheduled": "2025-07-05T13:15:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5499",
+                "iata": "QF5499",
+                "icao": "QFA5499",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "499",
+                    "flight_iata": "jq499",
+                    "flight_icao": "jst499"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:05:00+00:00",
+                "estimated": "2025-07-05T11:05:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T13:25:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "877",
+                "iata": "QF877",
+                "icao": "QFA877",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:05:00+00:00",
+                "estimated": "2025-07-05T11:05:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T13:25:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air New Zealand",
+                "iata": "NZ",
+                "icao": "ANZ"
+            },
+            "flight": {
+                "number": "7128",
+                "iata": "NZ7128",
+                "icao": "ANZ7128",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "877",
+                    "flight_iata": "qf877",
+                    "flight_icao": "qfa877"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:05:00+00:00",
+                "estimated": "2025-07-05T11:05:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T13:25:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "IndiGo",
+                "iata": "6E",
+                "icao": "IGO"
+            },
+            "flight": {
+                "number": "4774",
+                "iata": "6E4774",
+                "icao": "IGO4774",
+                "codeshared": {
+                    "airline_name": "qantas",
+                    "airline_iata": "qf",
+                    "airline_icao": "qfa",
+                    "flight_number": "877",
+                    "flight_iata": "qf877",
+                    "flight_icao": "qfa877"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 4,
+                "scheduled": "2025-07-05T10:20:00+00:00",
+                "estimated": "2025-07-05T10:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A34",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T11:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6725",
+                "iata": "SQ6725",
+                "icao": "SIA6725",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "516",
+                    "flight_iata": "va516",
+                    "flight_icao": "voz516"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 4,
+                "scheduled": "2025-07-05T10:20:00+00:00",
+                "estimated": "2025-07-05T10:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A34",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T11:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "7204",
+                "iata": "QR7204",
+                "icao": "QTR7204",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "516",
+                    "flight_iata": "va516",
+                    "flight_icao": "voz516"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "20",
+                "delay": 4,
+                "scheduled": "2025-07-05T10:20:00+00:00",
+                "estimated": "2025-07-05T10:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A34",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T11:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Hawaiian Airlines",
+                "iata": "HA",
+                "icao": "HAL"
+            },
+            "flight": {
+                "number": "4030",
+                "iata": "HA4030",
+                "icao": "HAL4030",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "516",
+                    "flight_iata": "va516",
+                    "flight_icao": "voz516"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "15",
+                "delay": null,
+                "scheduled": "2025-07-05T10:10:00+00:00",
+                "estimated": "2025-07-05T10:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A57",
+                "baggage": "D4",
+                "scheduled": "2025-07-05T11:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5407",
+                "iata": "QF5407",
+                "icao": "QFA5407",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "407",
+                    "flight_iata": "jq407",
+                    "flight_icao": "jst407"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T10:00:00+00:00",
+                "estimated": "2025-07-05T10:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T11:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "empty",
+                "iata": null,
+                "icao": null
+            },
+            "flight": {
+                "number": null,
+                "iata": null,
+                "icao": null,
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "11",
+                "delay": null,
+                "scheduled": "2025-07-05T10:00:00+00:00",
+                "estimated": "2025-07-05T10:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "45",
+                "baggage": null,
+                "scheduled": "2025-07-05T12:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "431",
+                "iata": "JQ431",
+                "icao": "JST431",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "11",
+                "delay": null,
+                "scheduled": "2025-07-05T10:00:00+00:00",
+                "estimated": "2025-07-05T10:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "45",
+                "baggage": null,
+                "scheduled": "2025-07-05T12:20:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5431",
+                "iata": "QF5431",
+                "icao": "QFA5431",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "431",
+                    "flight_iata": "jq431",
+                    "flight_icao": "jst431"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "active",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "2",
+                "gate": "40",
+                "delay": null,
+                "scheduled": "2025-07-05T09:35:00+00:00",
+                "estimated": "2025-07-05T09:35:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Auckland International",
+                "timezone": "Pacific/Auckland",
+                "iata": "AKL",
+                "icao": "NZAA",
+                "terminal": "I",
+                "gate": null,
+                "baggage": "ITB3",
+                "scheduled": "2025-07-05T14:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "131",
+                "iata": "JQ131",
+                "icao": "JST131",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "active",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "2",
+                "gate": "40",
+                "delay": null,
+                "scheduled": "2025-07-05T09:35:00+00:00",
+                "estimated": "2025-07-05T09:35:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Auckland International",
+                "timezone": "Pacific/Auckland",
+                "iata": "AKL",
+                "icao": "NZAA",
+                "terminal": "I",
+                "gate": null,
+                "baggage": "ITB3",
+                "scheduled": "2025-07-05T14:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5523",
+                "iata": "QF5523",
+                "icao": "QFA5523",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "131",
+                    "flight_iata": "jq131",
+                    "flight_icao": "jst131"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "active",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "2",
+                "gate": "39",
+                "delay": null,
+                "scheduled": "2025-07-05T09:25:00+00:00",
+                "estimated": "2025-07-05T09:25:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Dunedin International",
+                "timezone": "Pacific/Auckland",
+                "iata": "DUD",
+                "icao": "NZDN",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T14:45:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "189",
+                "iata": "JQ189",
+                "icao": "JST189",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "active",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "2",
+                "gate": "39",
+                "delay": null,
+                "scheduled": "2025-07-05T09:25:00+00:00",
+                "estimated": "2025-07-05T09:25:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Dunedin International",
+                "timezone": "Pacific/Auckland",
+                "iata": "DUD",
+                "icao": "NZDN",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T14:45:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "5561",
+                "iata": "QF5561",
+                "icao": "QFA5561",
+                "codeshared": {
+                    "airline_name": "jetstar",
+                    "airline_iata": "jq",
+                    "airline_icao": "jst",
+                    "flight_number": "189",
+                    "flight_iata": "jq189",
+                    "flight_icao": "jst189"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "active",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T09:20:00+00:00",
+                "estimated": "2025-07-05T09:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A40",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T10:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Singapore Airlines",
+                "iata": "SQ",
+                "icao": "SIA"
+            },
+            "flight": {
+                "number": "6719",
+                "iata": "SQ6719",
+                "icao": "SIA6719",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "512",
+                    "flight_iata": "va512",
+                    "flight_icao": "voz512"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "active",
+            "departure": {
+                "airport": "Gold Coast (coolangatta)",
+                "timezone": "Australia/Brisbane",
+                "iata": "OOL",
+                "icao": "YBCG",
+                "terminal": "1",
+                "gate": "16",
+                "delay": null,
+                "scheduled": "2025-07-05T09:20:00+00:00",
+                "estimated": "2025-07-05T09:20:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A40",
+                "baggage": "D2",
+                "scheduled": "2025-07-05T10:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qatar Airways",
+                "iata": "QR",
+                "icao": "QTR"
+            },
+            "flight": {
+                "number": "7148",
+                "iata": "QR7148",
+                "icao": "QTR7148",
+                "codeshared": {
+                    "airline_name": "virgin australia",
+                    "airline_iata": "va",
+                    "airline_icao": "voz",
+                    "flight_number": "512",
+                    "flight_iata": "va512",
+                    "flight_icao": "voz512"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Daguocun",
+                "timezone": "Asia/Shanghai",
+                "iata": "SJW",
+                "icao": "ZBSJ",
+                "terminal": "T2",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:15:00+00:00",
+                "estimated": "2025-07-05T11:15:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T12:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Shenzhen Airlines",
+                "iata": "ZH",
+                "icao": "CSZ"
+            },
+            "flight": {
+                "number": "9229",
+                "iata": "ZH9229",
+                "icao": "CSZ9229",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Daguocun",
+                "timezone": "Asia/Shanghai",
+                "iata": "SJW",
+                "icao": "ZBSJ",
+                "terminal": "T2",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:15:00+00:00",
+                "estimated": "2025-07-05T11:15:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T12:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Shandong Airlines",
+                "iata": "SC",
+                "icao": "CDG"
+            },
+            "flight": {
+                "number": "9833",
+                "iata": "SC9833",
+                "icao": "CDG9833",
+                "codeshared": {
+                    "airline_name": "shenzhen airlines",
+                    "airline_iata": "zh",
+                    "airline_icao": "csz",
+                    "flight_number": "9229",
+                    "flight_iata": "zh9229",
+                    "flight_icao": "csz9229"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T12:45:00+00:00",
+                "estimated": "2025-07-05T12:45:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Hohhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "HET",
+                "icao": "ZBHH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T13:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Genghis Khan Airlines",
+                "iata": "9D",
+                "icao": "NMG"
+            },
+            "flight": {
+                "number": "5688",
+                "iata": "9D5688",
+                "icao": "NMG5688",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T11:40:00+00:00",
+                "estimated": "2025-07-05T11:40:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Hohhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "HET",
+                "icao": "ZBHH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T12:50:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Tianjin Airlines",
+                "iata": "GS",
+                "icao": "GCR"
+            },
+            "flight": {
+                "number": "6695",
+                "iata": "GS6695",
+                "icao": "GCR6695",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "cancelled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T10:00:00+00:00",
+                "estimated": "2025-07-05T10:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Hohhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "HET",
+                "icao": "ZBHH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T11:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Tianjin Airlines",
+                "iata": "GS",
+                "icao": "GCR"
+            },
+            "flight": {
+                "number": "6610",
+                "iata": "GS6610",
+                "icao": "GCR6610",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "cancelled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T10:00:00+00:00",
+                "estimated": "2025-07-05T10:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Hohhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "HET",
+                "icao": "ZBHH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T11:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Hainan Airlines",
+                "iata": "HU",
+                "icao": "CHH"
+            },
+            "flight": {
+                "number": "3256",
+                "iata": "HU3256",
+                "icao": "CHH3256",
+                "codeshared": {
+                    "airline_name": "tianjin airlines",
+                    "airline_iata": "gs",
+                    "airline_icao": "gcr",
+                    "flight_number": "6610",
+                    "flight_iata": "gs6610",
+                    "flight_icao": "gcr6610"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T09:40:00+00:00",
+                "estimated": "2025-07-05T09:40:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Hohhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "HET",
+                "icao": "ZBHH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T11:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air China LTD",
+                "iata": "CA",
+                "icao": "CCA"
+            },
+            "flight": {
+                "number": "8156",
+                "iata": "CA8156",
+                "icao": "CCA8156",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T09:40:00+00:00",
+                "estimated": "2025-07-05T09:40:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Hohhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "HET",
+                "icao": "ZBHH",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T11:00:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Shenzhen Airlines",
+                "iata": "ZH",
+                "icao": "CSZ"
+            },
+            "flight": {
+                "number": "4656",
+                "iata": "ZH4656",
+                "icao": "CSZ4656",
+                "codeshared": {
+                    "airline_name": "air china ltd",
+                    "airline_iata": "ca",
+                    "airline_icao": "cca",
+                    "flight_number": "8156",
+                    "flight_iata": "ca8156",
+                    "flight_icao": "cca8156"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T09:15:00+00:00",
+                "estimated": "2025-07-05T09:15:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Beijing Capital International",
+                "timezone": "Asia/Shanghai",
+                "iata": "PEK",
+                "icao": "ZBAA",
+                "terminal": "2",
+                "gate": null,
+                "baggage": "16",
+                "scheduled": "2025-07-05T10:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air China LTD",
+                "iata": "CA",
+                "icao": "CCA"
+            },
+            "flight": {
+                "number": "1110",
+                "iata": "CA1110",
+                "icao": "CCA1110",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T09:15:00+00:00",
+                "estimated": "2025-07-05T09:15:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Beijing Capital International",
+                "timezone": "Asia/Shanghai",
+                "iata": "PEK",
+                "icao": "ZBAA",
+                "terminal": "2",
+                "gate": null,
+                "baggage": "16",
+                "scheduled": "2025-07-05T10:40:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Shenzhen Airlines",
+                "iata": "ZH",
+                "icao": "CSZ"
+            },
+            "flight": {
+                "number": "1110",
+                "iata": "ZH1110",
+                "icao": "CSZ1110",
+                "codeshared": {
+                    "airline_name": "air china ltd",
+                    "airline_iata": "ca",
+                    "airline_icao": "cca",
+                    "flight_number": "1110",
+                    "flight_iata": "ca1110",
+                    "flight_icao": "cca1110"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Xilinhot",
+                "timezone": "Asia/Shanghai",
+                "iata": "XIL",
+                "icao": "ZBXH",
+                "terminal": null,
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T09:10:00+00:00",
+                "estimated": "2025-07-05T09:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Chifeng",
+                "timezone": "Asia/Shanghai",
+                "iata": "CIF",
+                "icao": "ZBCF",
+                "terminal": null,
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T10:10:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Genghis Khan Airlines",
+                "iata": "9D",
+                "icao": "NMG"
+            },
+            "flight": {
+                "number": "5687",
+                "iata": "9D5687",
+                "icao": "NMG5687",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "George Best Belfast City",
+                "timezone": "Europe/London",
+                "iata": "BHD",
+                "icao": "EGAC",
+                "terminal": null,
+                "gate": null,
+                "delay": 9,
+                "scheduled": "2025-07-05T07:05:00+00:00",
+                "estimated": "2025-07-05T07:05:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Heathrow",
+                "timezone": "Europe/London",
+                "iata": "LHR",
+                "icao": "EGLL",
+                "terminal": "5",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T08:30:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "British Airways",
+                "iata": "BA",
+                "icao": "BAW"
+            },
+            "flight": {
+                "number": "1427",
+                "iata": "BA1427",
+                "icao": "BAW1427",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "45",
+                "delay": null,
+                "scheduled": "2025-07-05T15:05:00+00:00",
+                "estimated": "2025-07-05T15:05:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Brisbane International",
+                "timezone": "Australia/Brisbane",
+                "iata": "BNE",
+                "icao": "YBBN",
+                "terminal": "D",
+                "gate": "27",
+                "baggage": "D01",
+                "scheduled": "2025-07-05T17:10:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "566",
+                "iata": "JQ566",
+                "icao": "JST566",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "4",
+                "gate": "46",
+                "delay": null,
+                "scheduled": "2025-07-05T15:00:00+00:00",
+                "estimated": "2025-07-05T15:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "A54",
+                "baggage": "D5",
+                "scheduled": "2025-07-05T16:25:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Jetstar",
+                "iata": "JQ",
+                "icao": "JST"
+            },
+            "flight": {
+                "number": "520",
+                "iata": "JQ520",
+                "icao": "JST520",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "7",
+                "delay": null,
+                "scheduled": "2025-07-05T15:00:00+00:00",
+                "estimated": "2025-07-05T15:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "2",
+                "gate": "44",
+                "baggage": "D1",
+                "scheduled": "2025-07-05T16:25:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "853",
+                "iata": "VA853",
+                "icao": "VOZ853",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T15:00:00+00:00",
+                "estimated": "2025-07-05T15:00:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Sydney Kingsford Smith Airport",
+                "timezone": "Australia/Sydney",
+                "iata": "SYD",
+                "icao": "YSSY",
+                "terminal": "3",
+                "gate": "T3G",
+                "baggage": "QFR",
+                "scheduled": "2025-07-05T16:25:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "454",
+                "iata": "QF454",
+                "icao": "QFA454",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "4",
+                "delay": null,
+                "scheduled": "2025-07-05T14:50:00+00:00",
+                "estimated": "2025-07-05T14:50:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Cairns",
+                "timezone": "Australia/Brisbane",
+                "iata": "CNS",
+                "icao": "YBCS",
+                "terminal": "2",
+                "gate": null,
+                "baggage": null,
+                "scheduled": "2025-07-05T18:15:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "1295",
+                "iata": "VA1295",
+                "icao": "VOZ1295",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "1",
+                "gate": null,
+                "delay": null,
+                "scheduled": "2025-07-05T14:45:00+00:00",
+                "estimated": "2025-07-05T14:45:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Adelaide International Airport",
+                "timezone": "Australia/Adelaide",
+                "iata": "ADL",
+                "icao": "YPAD",
+                "terminal": "1",
+                "gate": "24",
+                "baggage": null,
+                "scheduled": "2025-07-05T15:35:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Qantas",
+                "iata": "QF",
+                "icao": "QFA"
+            },
+            "flight": {
+                "number": "685",
+                "iata": "QF685",
+                "icao": "QFA685",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        },
+        {
+            "flight_date": "2025-07-05",
+            "flight_status": "scheduled",
+            "departure": {
+                "airport": "Melbourne - Tullamarine Airport",
+                "timezone": "Australia/Melbourne",
+                "iata": "MEL",
+                "icao": "YMML",
+                "terminal": "3",
+                "gate": "9",
+                "delay": null,
+                "scheduled": "2025-07-05T14:45:00+00:00",
+                "estimated": "2025-07-05T14:45:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "arrival": {
+                "airport": "Perth International",
+                "timezone": "Australia/Perth",
+                "iata": "PER",
+                "icao": "YPPH",
+                "terminal": "1",
+                "gate": "47B",
+                "baggage": null,
+                "scheduled": "2025-07-05T17:10:00+00:00",
+                "delay": null,
+                "estimated": null,
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Virgin Australia",
+                "iata": "VA",
+                "icao": "VOZ"
+            },
+            "flight": {
+                "number": "687",
+                "iata": "VA687",
+                "icao": "VOZ687",
+                "codeshared": null
+            },
+            "aircraft": null,
+            "live": null
+        }
+    ]
+}
