@@ -1,0 +1,5 @@
+﻿boto3==1.28.0
+requests==2.31.0
+python-dotenv==1.0.0
+apache-airflow==2.7.0
+pyspark==3.4.0
