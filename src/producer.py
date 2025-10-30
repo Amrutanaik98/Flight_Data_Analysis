@@ -13,7 +13,7 @@ API_KEY = 'f55544b68e9a2701c92c8515adaf6b7e'  # From your original code
 FLIGHT_API_URL = 'http://api.aviationstack.com/v1/flights'
 
 # AWS Configuration
-QUEUE_URL = 'https://sqs.us-east-1.amazonaws.com/YOUR_ACCOUNT_ID/flight-queue'
+QUEUE_URL = 'https://sqs.us-east-1.amazonaws.com/293732298754/flight-queue'
 REGION = 'us-east-1'
 
 # ============================================

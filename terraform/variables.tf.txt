@@ -19,5 +19,5 @@ variable "environment" {
 variable "bucket_name" {
   description = "S3 bucket name"
   type        = string
-  default     = "flights-data-lake-amruta"
+  default     = "flights-data-lake-amruta-2025"
 }
