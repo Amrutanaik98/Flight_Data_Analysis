@@ -212,5 +212,7 @@ __marimo__/
 .terraform.lock.hcl
 *.tfstate
 *.tfstate.*
-terraform/terraform.tfvars.txt
+*.tfvars 
 tfplan
+
+
