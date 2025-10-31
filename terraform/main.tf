@@ -1,5 +1,6 @@
 # ============================================
-# AWS Provider
+# FIXED main.tf
+# AWS Provider & Core Resources
 # ============================================
 
 terraform {
@@ -30,6 +31,17 @@ resource "aws_s3_bucket" "data_lake" {
   }
 }
 
+# ✅ ADDED: Block public access (SECURITY)
+resource "aws_s3_bucket_public_access_block" "data_lake" {
+  bucket = aws_s3_bucket.data_lake.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# Enable versioning
 resource "aws_s3_bucket_versioning" "data_lake" {
   bucket = aws_s3_bucket.data_lake.id
 
@@ -38,56 +50,52 @@ resource "aws_s3_bucket_versioning" "data_lake" {
   }
 }
 
+# ✅ ADDED: Server-side encryption
+resource "aws_s3_bucket_server_side_encryption_configuration" "data_lake" {
+  bucket = aws_s3_bucket.data_lake.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+
 # ============================================
 # S3 Folders Structure
 # ============================================
 
-# Raw data folder
 resource "aws_s3_object" "raw_folder" {
-  bucket = aws_s3_bucket.data_lake.id
-  key    = "raw/"
-  source = "/dev/null"
-
-  tags = {
-    Name = "Raw Flight Data"
-  }
+  bucket  = aws_s3_bucket.data_lake.id
+  key     = "raw/"
+  content = ""
 }
 
-# Processed data folder
 resource "aws_s3_object" "processed_folder" {
-  bucket = aws_s3_bucket.data_lake.id
-  key    = "processed/"
-  source = "/dev/null"
-
-  tags = {
-    Name = "Processed Flight Data"
-  }
+  bucket  = aws_s3_bucket.data_lake.id
+  key     = "processed/"
+  content = ""
 }
 
-# Archive folder
 resource "aws_s3_object" "archive_folder" {
-  bucket = aws_s3_bucket.data_lake.id
-  key    = "archive/"
-  source = "/dev/null"
-
-  tags = {
-    Name = "Archived Flight Data"
-  }
+  bucket  = aws_s3_bucket.data_lake.id
+  key     = "archive/"
+  content = ""
 }
 
-# Analytics folder (for aggregated data)
 resource "aws_s3_object" "analytics_folder" {
-  bucket = aws_s3_bucket.data_lake.id
-  key    = "analytics/"
-  source = "/dev/null"
-
-  tags = {
-    Name = "Analytics Results"
-  }
+  bucket  = aws_s3_bucket.data_lake.id
+  key     = "analytics/"
+  content = ""
 }
 
 # ============================================
 # DynamoDB Table - Real-time Data
+# ============================================
+
+# ============================================
+# DynamoDB Table - TEMPORARY FIX (No Stream)
+# Use this while we fix the provider version issue
 # ============================================
 
 resource "aws_dynamodb_table" "flights_realtime" {
@@ -111,10 +119,6 @@ resource "aws_dynamodb_table" "flights_realtime" {
     enabled        = true
   }
 
-  stream_specification {
-    stream_view_type = "NEW_AND_OLD_IMAGES"
-  }
-
   tags = {
     Name        = "Flight Real-time Table"
     Project     = var.project_name
@@ -123,15 +127,16 @@ resource "aws_dynamodb_table" "flights_realtime" {
   }
 }
 
+
 # ============================================
 # SQS Queue - Message Streaming
 # ============================================
 
 resource "aws_sqs_queue" "flight_queue" {
-  name                      = "${var.project_name}-queue-${var.environment}"
+  name                      = var.queue_name
   delay_seconds             = 0
   max_message_size          = 262144
-  message_retention_seconds = 1345600
+  message_retention_seconds = 1209600
   receive_wait_time_seconds = 20
   visibility_timeout_seconds = 300
 
@@ -162,10 +167,6 @@ resource "aws_iam_role" "lambda_role" {
       }
     ]
   })
-
-  tags = {
-    CreatedBy = "Terraform"
-  }
 }
 
 # Lambda basic execution role (for CloudWatch logs)
@@ -193,7 +194,7 @@ resource "aws_iam_role_policy_attachment" "lambda_s3" {
 }
 
 # ============================================
-# IAM Role - Glue (for batch processing later)
+# IAM Role - Glue (for batch processing)
 # ============================================
 
 resource "aws_iam_role" "glue_role" {
@@ -211,10 +212,6 @@ resource "aws_iam_role" "glue_role" {
       }
     ]
   })
-
-  tags = {
-    CreatedBy = "Terraform"
-  }
 }
 
 resource "aws_iam_role_policy_attachment" "glue_service" {
@@ -246,7 +243,10 @@ resource "aws_cloudwatch_log_group" "lambda_logs" {
   retention_in_days = 7
 
   tags = {
-    CreatedBy = "Terraform"
+    Name        = "Lambda Logs"
+    Project     = var.project_name
+    Environment = var.environment
+    CreatedBy   = "Terraform"
   }
 }
 
@@ -255,7 +255,10 @@ resource "aws_cloudwatch_log_group" "glue_logs" {
   retention_in_days = 7
 
   tags = {
-    CreatedBy = "Terraform"
+    Name        = "Glue Logs"
+    Project     = var.project_name
+    Environment = var.environment
+    CreatedBy   = "Terraform"
   }
 }
 

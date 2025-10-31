@@ -19,5 +19,11 @@ variable "environment" {
 variable "bucket_name" {
   description = "S3 bucket name"
   type        = string
-  default     = "flights-data-lake-amruta-2025"
+  default     = "flights-data-lake-amruta"
+}
+
+variable "queue_name" {
+  description = "SQS queue name"
+  type        = string
+  default     = "flight_dev"
 }

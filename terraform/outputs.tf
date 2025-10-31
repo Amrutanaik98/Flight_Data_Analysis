@@ -48,11 +48,6 @@ output "dynamodb_table_arn" {
   value       = aws_dynamodb_table.flights_realtime.arn
 }
 
-output "dynamodb_stream_arn" {
-  description = "ARN of DynamoDB stream"
-  value       = aws_dynamodb_table.flights_realtime.stream_arn
-}
-
 # ============================================
 # SQS Outputs
 # ============================================
