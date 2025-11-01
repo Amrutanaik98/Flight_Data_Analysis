@@ -9,11 +9,14 @@ from datetime import datetime
 # ============================================
 
 # Your API credentials
-API_KEY = 'f55544b68e9a2701c92c8515adaf6b7e'  # From your original code
+API_KEY = 'f55544b68e9a2701c92c8515adaf6b7e'  # From Aviation Stack
 FLIGHT_API_URL = 'http://api.aviationstack.com/v1/flights'
 
-# AWS Configuration
-QUEUE_URL = 'https://sqs.us-east-1.amazonaws.com/293732298754/flight-queue'
+# AWS Configuration (FROM TERRAFORM)
+# ⚠️ UPDATE THESE VALUES FROM: terraform output
+QUEUE_NAME = 'flight_dev'  # ✅ CHANGED: flight-queue → flight_dev
+SQS_QUEUE_URL = 'https://sqs.us-east-1.amazonaws.com/293732298754/flight_dev'  # ⚠️ REPLACE WITH YOUR VALUE
+S3_BUCKET = 'flights-data-lake-amruta'  # ✅ Same as before
 REGION = 'us-east-1'
 
 # ============================================
@@ -24,16 +27,19 @@ sqs_client = boto3.client('sqs', region_name=REGION)
 s3_client = boto3.client('s3', region_name=REGION)
 
 # ============================================
-# FUNCTION: Get Queue URL (Auto-detect)
+# FUNCTION: Get Queue URL (Auto-detect from Terraform)
 # ============================================
 
 def get_queue_url():
-    """Automatically get the SQS queue URL"""
+    """Automatically get the SQS queue URL from queue name"""
     try:
-        response = sqs_client.get_queue_url(QueueName='flight-queue')
-        return response['QueueUrl']
+        response = sqs_client.get_queue_url(QueueName=QUEUE_NAME)
+        queue_url = response['QueueUrl']
+        print(f"✅ Found queue URL: {queue_url}")
+        return queue_url
     except Exception as e:
         print(f"❌ Error getting queue URL: {e}")
+        print(f"❌ Make sure queue name '{QUEUE_NAME}' exists")
         return None
 
 # ============================================
@@ -94,21 +100,19 @@ def send_to_sqs(queue_url, flight_data):
 def save_to_s3(flight_data):
     """Save flight data to S3 raw layer"""
     try:
-        bucket_name = 'flights-data-lake-amruta'  # REPLACE WITH YOUR BUCKET NAME
-        
         # Create timestamp for file name
         timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         file_key = f'raw/flights_{timestamp}.json'
         
         # Save to S3
         s3_client.put_object(
-            Bucket=bucket_name,
+            Bucket=S3_BUCKET,
             Key=file_key,
             Body=json.dumps(flight_data, indent=2),
             ContentType='application/json'
         )
         
-        print(f"✅ Saved to S3: s3://{bucket_name}/{file_key}")
+        print(f"✅ Saved to S3: s3://{S3_BUCKET}/{file_key}")
         return True
     
     except Exception as e:
