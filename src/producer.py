@@ -13,10 +13,8 @@ API_KEY = 'f55544b68e9a2701c92c8515adaf6b7e'  # From Aviation Stack
 FLIGHT_API_URL = 'http://api.aviationstack.com/v1/flights'
 
 # AWS Configuration (FROM TERRAFORM)
-# ⚠️ UPDATE THESE VALUES FROM: terraform output
-QUEUE_NAME = 'flight_dev'  # ✅ CHANGED: flight-queue → flight_dev
-SQS_QUEUE_URL = 'https://sqs.us-east-1.amazonaws.com/293732298754/flight_dev'  # ⚠️ REPLACE WITH YOUR VALUE
-S3_BUCKET = 'flights-data-lake-amruta'  # ✅ Same as before
+QUEUE_NAME = 'flight_dev'
+S3_BUCKET = 'flights-data-lake-amruta'
 REGION = 'us-east-1'
 
 # ============================================
@@ -27,7 +25,7 @@ sqs_client = boto3.client('sqs', region_name=REGION)
 s3_client = boto3.client('s3', region_name=REGION)
 
 # ============================================
-# FUNCTION: Get Queue URL (Auto-detect from Terraform)
+# FUNCTION: Get Queue URL
 # ============================================
 
 def get_queue_url():
@@ -39,7 +37,6 @@ def get_queue_url():
         return queue_url
     except Exception as e:
         print(f"❌ Error getting queue URL: {e}")
-        print(f"❌ Make sure queue name '{QUEUE_NAME}' exists")
         return None
 
 # ============================================
@@ -76,7 +73,7 @@ def fetch_flight_data():
 def send_to_sqs(queue_url, flight_data):
     """Send flight data to SQS queue"""
     try:
-        # Convert to JSON
+        # Convert to JSON string
         message_body = json.dumps(flight_data)
         
         # Send to SQS
@@ -94,25 +91,38 @@ def send_to_sqs(queue_url, flight_data):
         return False
 
 # ============================================
-# FUNCTION: Save to S3 (Raw Data Lake)
+# FUNCTION: Save to S3 (JSONL Format - FIXED!)
 # ============================================
 
 def save_to_s3(flight_data):
-    """Save flight data to S3 raw layer"""
+    """Save flight data to S3 raw layer in proper JSONL format"""
     try:
         # Create timestamp for file name
         timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         file_key = f'raw/flights_{timestamp}.json'
         
+        # ✅ FIXED: Create JSONL format (one JSON object per line, NO array)
+        # Each flight is a separate line
+        jsonl_lines = []
+        for flight in flight_data:
+            # Ensure each flight is a valid JSON object on its own line
+            flight_json = json.dumps(flight, separators=(',', ':'))  # Compact format
+            jsonl_lines.append(flight_json)
+        
+        # Join with newlines (JSONL format)
+        jsonl_content = '\n'.join(jsonl_lines)
+        
         # Save to S3
         s3_client.put_object(
             Bucket=S3_BUCKET,
             Key=file_key,
-            Body=json.dumps(flight_data, indent=2),
+            Body=jsonl_content.encode('utf-8'),  # ✅ Encode to bytes
             ContentType='application/json'
         )
         
         print(f"✅ Saved to S3: s3://{S3_BUCKET}/{file_key}")
+        print(f"   Format: JSONL (one JSON object per line)")
+        print(f"   Records: {len(flight_data)}")
         return True
     
     except Exception as e:
@@ -188,7 +198,7 @@ def main():
         send_to_sqs(queue_url, flight)
         time.sleep(0.5)  # Small delay between messages
     
-    # Save to S3 (all flights together)
+    # Save to S3 (all flights in JSONL format)
     print("\n💾 Saving to S3...")
     save_to_s3(processed_flights)
     
@@ -196,7 +206,10 @@ def main():
     print("✅ PRODUCER COMPLETED SUCCESSFULLY!")
     print("=" * 50)
     print(f"📊 Processed: {len(processed_flights)} flights")
+    print(f"📤 Sent to SQS: {len(processed_flights)} messages")
+    print(f"💾 Saved to S3: s3://{S3_BUCKET}/raw/flights_*.json")
     print(f"⏰ Completed at: {datetime.now()}")
+    print("=" * 50)
 
 # ============================================
 # RUN THE SCRIPT
