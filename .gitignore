@@ -216,3 +216,24 @@ __marimo__/
 tfplan
 
 
+nano .gitignore
+```
+
+Go to the **end of the file** and add:
+```
+# Airflow specific
+airflow/airflow.db
+airflow/airflow.cfg
+airflow/logs/
+airflow/webserver_config.py
+airflow/*.pid
+airflow/*.err
+airflow/*.out
+airflow/dags/__pycache__/
+
+# Quality/Report files
+*_report.json
+quality_report.json
+
+# AWS CLI config
+.aws/
