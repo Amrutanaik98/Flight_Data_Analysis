@@ -226,11 +226,7 @@ terraform init
 terraform apply
 ```
 
-7. **Access Services**
-- Airflow UI: http://34.195.227.103:8080
-- Dashboard: http://34.195.227.103:8055
-- Username: admin
-- Password: airflow123
+
 
 ---
 
