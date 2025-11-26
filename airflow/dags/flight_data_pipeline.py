@@ -11,6 +11,8 @@ SQS_QUEUE_NAME = "flight_dev"
 DYNAMODB_TABLE = "flights-realtime-dev"
 GLUE_JOB_NAME = "flight_data_processing"
 PRODUCER_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/src/producer.py"
+ANALYTICS_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/analytics/flight_analytics.py"
+REPORTS_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/analytics/generate_reports.py"
 
 default_args = {
     'owner': 'airflow',
@@ -21,12 +23,16 @@ default_args = {
 dag = DAG(
     'flight_data_pipeline',
     default_args=default_args,
-    description='Flight Data Pipeline - Producer → S3/SQS → Lambda → DynamoDB, Glue → S3 Processed',
-    schedule_interval='*/30 * * * *',
+    description='Flight Data Pipeline - Producer → S3/SQS → Lambda → DynamoDB, Glue → S3 Processed → Analytics → Reports',
+    schedule_interval='@daily',  # Run daily instead of every 30 minutes
     start_date=datetime(2025, 1, 1),
     catchup=False,
-    tags=['flights', 'production', 'data-pipeline'],
+    tags=['flights', 'production', 'data-pipeline', 'analytics'],
 )
+
+# ============================================================
+# PHASE 1: DATA INGESTION
+# ============================================================
 
 def run_producer_script():
     print("=" * 70)
@@ -220,6 +226,77 @@ def check_processed_data():
         print(f"⚠️ Processed data warning: {str(e)}")
         return "Processed skipped"
 
+# ============================================================
+# PHASE 2: ANALYTICS & REPORTS (NEW!)
+# ============================================================
+
+def run_analytics():
+    print("=" * 70)
+    print("📊 STEP 7: RUNNING ANALYTICS ENGINE")
+    print("=" * 70)
+    print("Action: Analyze flight data from DynamoDB")
+    print("Analysis: Airline performance, routes, delays, trends")
+    print("Output: Analytics report saved to S3")
+    print("")
+    
+    try:
+        result = subprocess.run(
+            ['python', ANALYTICS_SCRIPT],
+            capture_output=True,
+            text=True,
+            timeout=600,
+        )
+        
+        print("ANALYTICS OUTPUT:")
+        print(result.stdout)
+        
+        if result.returncode != 0:
+            print("ANALYTICS ERROR:")
+            print(result.stderr)
+            raise Exception(f"Analytics failed with code {result.returncode}")
+        
+        print("=" * 70)
+        print("✅ STEP 7 COMPLETE: Analytics report generated & saved to S3")
+        print("=" * 70)
+        return "Analytics executed successfully"
+        
+    except Exception as e:
+        print(f"❌ ERROR: {str(e)}")
+        raise
+
+def run_report_generator():
+    print("=" * 70)
+    print("📧 STEP 8: GENERATING & SENDING REPORTS")
+    print("=" * 70)
+    print("Action: Generate formatted reports from analytics")
+    print("Output: Email summary, text summary saved to S3")
+    print("")
+    
+    try:
+        result = subprocess.run(
+            ['python', REPORTS_SCRIPT],
+            capture_output=True,
+            text=True,
+            timeout=600,
+        )
+        
+        print("REPORT GENERATOR OUTPUT:")
+        print(result.stdout)
+        
+        if result.returncode != 0:
+            print("REPORT GENERATOR ERROR:")
+            print(result.stderr)
+            raise Exception(f"Report generation failed with code {result.returncode}")
+        
+        print("=" * 70)
+        print("✅ STEP 8 COMPLETE: Reports generated & saved to S3")
+        print("=" * 70)
+        return "Report generation executed successfully"
+        
+    except Exception as e:
+        print(f"❌ ERROR: {str(e)}")
+        raise
+
 def send_notification():
     print("=" * 70)
     print("✅ PIPELINE EXECUTION COMPLETE")
@@ -228,15 +305,22 @@ def send_notification():
     print("🎉 FLIGHT DATA PIPELINE COMPLETED!")
     print("")
     print("📋 Complete Data Flow:")
-    print("  1. Producer.py → Fetched API data")
-    print("  2. Data → S3 raw/ + SQS queue")
-    print("  3. Lambda (external) processed SQS → DynamoDB (real-time)")
-    print("  4. Glue job processed S3 raw/ → S3 processed/ (batch)")
-    print("  5. All validations passed")
+    print("  PHASE 1 - DATA INGESTION:")
+    print("    1. Producer.py → Fetched API data")
+    print("    2. Data → S3 raw/ + SQS queue")
+    print("    3. Lambda (external) processed SQS → DynamoDB (real-time)")
+    print("    4. Glue job processed S3 raw/ → S3 processed/ (batch)")
+    print("  PHASE 2 - ANALYTICS & REPORTS:")
+    print("    7. Analytics engine → Analyzed all metrics")
+    print("    8. Report generator → Generated & sent reports")
     print("")
     print(f"Execution Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
-    return "Pipeline complete"
+    return "Pipeline complete with analytics!"
+
+# ============================================================
+# DEFINE TASKS
+# ============================================================
 
 task_start = BashOperator(
     task_id='pipeline_start',
@@ -280,16 +364,33 @@ task_check_processed = PythonOperator(
     dag=dag,
 )
 
+# NEW ANALYTICS TASKS
+task_analytics = PythonOperator(
+    task_id='step_7_run_analytics',
+    python_callable=run_analytics,
+    dag=dag,
+)
+
+task_reports = PythonOperator(
+    task_id='step_8_generate_reports',
+    python_callable=run_report_generator,
+    dag=dag,
+)
+
 task_notify = PythonOperator(
-    task_id='step_7_send_notification',
+    task_id='step_9_send_notification',
     python_callable=send_notification,
     dag=dag,
 )
 
 task_end = BashOperator(
     task_id='pipeline_complete',
-    bash_command='echo "✅ Flight Data Pipeline Completed"',
+    bash_command='echo "✅ Flight Data Pipeline Completed with Analytics"',
     dag=dag,
 )
 
-task_start >> task_producer >> task_check_sqs >> task_lambda_dynamodb >> task_trigger_glue >> task_wait_glue >> task_check_processed >> task_notify >> task_end
+# ============================================================
+# DEFINE TASK DEPENDENCIES
+# ============================================================
+
+task_start >> task_producer >> task_check_sqs >> task_lambda_dynamodb >> task_trigger_glue >> task_wait_glue >> task_check_processed >> task_analytics >> task_reports >> task_notify >> task_end
