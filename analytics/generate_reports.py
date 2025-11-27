@@ -1,195 +1,206 @@
 import boto3
 import json
-from datetime import datetime
 import logging
+from datetime import datetime
+from botocore.exceptions import ClientError
 
-logging.basicConfig(level=logging.INFO)
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(name)s:%(message)s')
 logger = logging.getLogger(__name__)
 
 class ReportGenerator:
-    """Generate and send automated reports"""
-    
-    def __init__(self):
+    def __init__(self, region='us-east-1', bucket='flights-data-lake-amruta'):
         """Initialize AWS clients"""
         try:
-            self.s3 = boto3.client('s3', region_name='us-east-1')
-            self.sns = boto3.client('sns', region_name='us-east-1')
-            self.bucket = 'flights-data-lake-amruta'
-            logger.info("✅ Report generator initialized")
+            self.s3 = boto3.client('s3', region_name=region)
+            self.bucket = bucket
+            logger.info("✅ AWS S3 client initialized successfully")
         except Exception as e:
-            logger.error(f"❌ Failed to initialize: {e}")
+            logger.error(f"❌ Error initializing S3 client: {e}")
             raise
-    
-    def load_latest_report(self):
-        """Load latest analytics report from S3"""
+
+    def get_latest_analytics(self):
+        """Get the latest analytics report from S3"""
         try:
-            logger.info("📂 Loading latest report from S3...")
+            logger.info("📂 Fetching latest analytics report from S3...")
             
-            # List reports and get latest
+            # List objects in analytics/reports folder
             response = self.s3.list_objects_v2(
                 Bucket=self.bucket,
                 Prefix='analytics/reports/',
-                MaxKeys=1
+                MaxKeys=100
             )
             
-            if 'Contents' not in response:
-                logger.warning("⚠️ No reports found in S3")
+            if 'Contents' not in response or len(response['Contents']) == 0:
+                logger.warning("⚠️ No analytics reports found in S3")
                 return None
             
-            latest_file = response['Contents'][0]['Key']
+            # Get the latest file (most recently modified)
+            latest_file = sorted(response['Contents'], key=lambda x: x['LastModified'], reverse=True)[0]
+            latest_key = latest_file['Key']
             
-            # Get the report
-            obj = self.s3.get_object(Bucket=self.bucket, Key=latest_file)
-            report = json.loads(obj['Body'].read().decode('utf-8'))
+            logger.info(f"✅ Found latest report: {latest_key}")
             
-            logger.info(f"✅ Loaded report: {latest_file}")
-            return report
-        
-        except Exception as e:
-            logger.error(f"❌ Error loading report: {e}")
+            # Download and parse the JSON
+            obj = self.s3.get_object(Bucket=self.bucket, Key=latest_key)
+            analytics = json.loads(obj['Body'].read().decode('utf-8'))
+            
+            return analytics
+            
+        except ClientError as e:
+            logger.error(f"❌ Error fetching analytics from S3: {e}")
             return None
-    
-    def format_email_body(self, report):
-        """Format report as email body"""
-        try:
-            if not report:
-                return "No report data available"
-            
-            summary = report.get('summary', {})
-            
-            email_body = f"""
-            <html>
-            <head>
-                <style>
-                    body {{ font-family: Arial, sans-serif; }}
-                    .header {{ background-color: #4CAF50; color: white; padding: 20px; }}
-                    .metric {{ background-color: #f0f0f0; padding: 10px; margin: 5px; }}
-                    .success {{ color: green; }}
-                    .warning {{ color: orange; }}
-                    .danger {{ color: red; }}
-                </style>
-            </head>
-            <body>
-                <div class="header">
-                    <h1>✈️ Daily Flight Analytics Report</h1>
-                    <p>Generated: {report.get('generated_at', 'N/A')}</p>
-                </div>
-                
-                <h2>📊 Summary Statistics</h2>
-                <div class="metric">
-                    <p><strong>Total Flights:</strong> {summary.get('total_flights', 0)}</p>
-                    <p class="success"><strong>On-Time Flights:</strong> {summary.get('on_time_flights', 0)} ({summary.get('on_time_rate_percent', 0):.1f}%)</p>
-                    <p class="warning"><strong>Delayed Flights:</strong> {summary.get('delayed_flights', 0)} ({summary.get('delay_rate_percent', 0):.1f}%)</p>
-                    <p class="danger"><strong>Cancelled Flights:</strong> {summary.get('cancelled_flights', 0)} ({summary.get('cancellation_rate_percent', 0):.1f}%)</p>
-                </div>
-                
-                <h2>⏱️ Delay Metrics</h2>
-                <div class="metric">
-                    <p><strong>Average Delay:</strong> {summary.get('avg_delay_minutes', 0):.2f} minutes</p>
-                    <p><strong>Max Delay:</strong> {summary.get('max_delay_minutes', 0):.2f} minutes</p>
-                    <p><strong>Median Delay:</strong> {summary.get('median_delay_minutes', 0):.2f} minutes</p>
-                </div>
-                
-                <hr>
-                <p><small>This is an automated report. Do not reply to this email.</small></p>
-            </body>
-            </html>
-            """
-            
-            return email_body
-        
         except Exception as e:
-            logger.error(f"❌ Error formatting email: {e}")
-            return "Error formatting report"
-    
-    def send_email_report(self, report, email_subject="Daily Flight Analytics Report"):
-        """Send report via SNS"""
+            logger.error(f"❌ Unexpected error fetching analytics: {e}")
+            return None
+
+    def format_report(self, analytics):
+        """Format analytics into a readable text report"""
         try:
-            logger.info("📧 Sending email report via SNS...")
+            if not analytics:
+                logger.warning("⚠️ No analytics to format")
+                return None
             
-            email_body = self.format_email_body(report)
+            logger.info("📝 Formatting report...")
             
-            # Note: Replace with your actual SNS topic ARN or SES email
-            # For now, we'll just log it
-            logger.info("✅ Email report formatted")
-            logger.info(f"Subject: {email_subject}")
-            logger.info("Email body prepared (check logs)")
+            # Build the report
+            report = []
+            report.append("=" * 70)
+            report.append("FLIGHT DATA ANALYTICS REPORT")
+            report.append("=" * 70)
+            report.append("")
             
-            return True
-        
+            # Metadata
+            timestamp = analytics.get('analysis_timestamp', 'N/A')
+            total_flights = analytics.get('total_flights', 0)
+            report.append(f"Report Generated: {timestamp}")
+            report.append(f"Total Flights Analyzed: {total_flights}")
+            report.append("")
+            
+            # Airlines breakdown
+            if analytics.get('by_airline'):
+                report.append("-" * 70)
+                report.append("FLIGHTS BY AIRLINE")
+                report.append("-" * 70)
+                for airline, count in sorted(analytics['by_airline'].items(), key=lambda x: x[1], reverse=True):
+                    percentage = (count / total_flights * 100) if total_flights > 0 else 0
+                    report.append(f"  {airline}: {count} flights ({percentage:.1f}%)")
+                report.append("")
+            
+            # Status breakdown
+            if analytics.get('by_status'):
+                report.append("-" * 70)
+                report.append("FLIGHTS BY STATUS")
+                report.append("-" * 70)
+                for status, count in sorted(analytics['by_status'].items(), key=lambda x: x[1], reverse=True):
+                    percentage = (count / total_flights * 100) if total_flights > 0 else 0
+                    report.append(f"  {status}: {count} flights ({percentage:.1f}%)")
+                report.append("")
+            
+            # Routes breakdown
+            if analytics.get('by_route'):
+                report.append("-" * 70)
+                report.append("TOP ROUTES")
+                report.append("-" * 70)
+                routes = sorted(analytics['by_route'].items(), key=lambda x: x[1], reverse=True)
+                for i, (route, count) in enumerate(routes[:10], 1):  # Top 10 routes
+                    report.append(f"  {i}. {route}: {count} flights")
+                
+                if len(routes) > 10:
+                    report.append(f"  ... and {len(routes) - 10} more routes")
+                report.append("")
+            
+            # Footer
+            report.append("=" * 70)
+            report.append("END OF REPORT")
+            report.append("=" * 70)
+            
+            # Join all lines
+            formatted_report = "\n".join(report)
+            logger.info("✅ Report formatted successfully")
+            
+            return formatted_report
+            
         except Exception as e:
-            logger.error(f"❌ Error sending email: {e}")
-            return False
-    
-    def save_summary_to_s3(self, report):
-        """Save summary as text file to S3"""
+            logger.error(f"❌ Error formatting report: {e}")
+            return None
+
+    def save_report(self, report_text):
+        """Save formatted report to S3"""
         try:
-            logger.info("📝 Saving summary to S3...")
+            if not report_text:
+                logger.warning("⚠️ No report to save")
+                return False
             
-            summary = report.get('summary', {})
-            date = datetime.now().strftime('%Y-%m-%d')
+            timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            key = f'analytics/summaries/flight_report_{timestamp}.txt'
             
-            summary_text = f"""
-FLIGHT ANALYTICS SUMMARY - {date}
-===================================
-
-FLIGHTS OVERVIEW:
-- Total Flights: {summary.get('total_flights', 0)}
-- On-Time: {summary.get('on_time_flights', 0)} ({summary.get('on_time_rate_percent', 0):.1f}%)
-- Delayed: {summary.get('delayed_flights', 0)} ({summary.get('delay_rate_percent', 0):.1f}%)
-- Cancelled: {summary.get('cancelled_flights', 0)} ({summary.get('cancellation_rate_percent', 0):.1f}%)
-
-DELAY METRICS:
-- Average Delay: {summary.get('avg_delay_minutes', 0):.2f} minutes
-- Max Delay: {summary.get('max_delay_minutes', 0):.2f} minutes
-- Median Delay: {summary.get('median_delay_minutes', 0):.2f} minutes
-
-Generated: {report.get('generated_at', 'N/A')}
-            """
-            
-            key = f'analytics/summaries/{date}_summary.txt'
+            logger.info(f"💾 Saving report to S3: s3://{self.bucket}/{key}")
             
             self.s3.put_object(
                 Bucket=self.bucket,
                 Key=key,
-                Body=summary_text,
+                Body=report_text.encode('utf-8'),
                 ContentType='text/plain'
             )
             
-            logger.info(f"✅ Summary saved to s3://{self.bucket}/{key}")
-            return key
-        
+            logger.info(f"✅ Report saved successfully")
+            logger.info(f"📍 Location: s3://{self.bucket}/{key}")
+            
+            return True
+            
+        except ClientError as e:
+            logger.error(f"❌ Error saving to S3: {e}")
+            return False
         except Exception as e:
-            logger.error(f"❌ Error saving summary: {e}")
-            return None
+            logger.error(f"❌ Unexpected error saving report: {e}")
+            return False
 
+    def print_report(self, report_text):
+        """Print report to console"""
+        if report_text:
+            print("\n")
+            print(report_text)
+            print("\n")
 
-# ===== MAIN EXECUTION =====
-if __name__ == "__main__":
-    try:
-        logger.info("=" * 60)
-        logger.info("🚀 REPORT GENERATOR STARTED")
-        logger.info("=" * 60)
-        
-        # Initialize generator
-        generator = ReportGenerator()
-        
-        # Load latest report
-        report = generator.load_latest_report()
-        
-        if report:
-            # Format and send email
-            generator.send_email_report(report)
-            
-            # Save summary
-            generator.save_summary_to_s3(report)
-            
-            logger.info("=" * 60)
-            logger.info("✅ REPORT GENERATION COMPLETE")
-            logger.info("=" * 60)
-        else:
-            logger.warning("⚠️ No report available to generate")
+def main():
+    """Main execution"""
+    logger.info("=" * 70)
+    logger.info("🚀 REPORT GENERATOR STARTED")
+    logger.info("=" * 70)
     
+    try:
+        # Initialize report generator
+        generator = ReportGenerator(bucket='flights-data-lake-amruta')
+        
+        # Get latest analytics
+        analytics = generator.get_latest_analytics()
+        
+        if not analytics:
+            logger.warning("⚠️ No analytics available to generate report")
+            return
+        
+        # Format report
+        report = generator.format_report(analytics)
+        
+        if not report:
+            logger.error("❌ Failed to format report")
+            return
+        
+        # Print to console
+        generator.print_report(report)
+        
+        # Save to S3
+        generator.save_report(report)
+        
+        logger.info("✅ Report generation completed successfully")
+        
     except Exception as e:
         logger.error(f"❌ Fatal error: {e}")
-        raise
+    
+    logger.info("=" * 70)
+    logger.info("🏁 REPORT GENERATOR FINISHED")
+    logger.info("=" * 70)
+
+if __name__ == '__main__':
+    main()
