@@ -1,274 +1,161 @@
 import boto3
 import pandas as pd
-from datetime import datetime, timedelta
 import json
 import logging
+from datetime import datetime, timedelta
+from botocore.exceptions import ClientError
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(name)s:%(message)s')
 logger = logging.getLogger(__name__)
 
 class FlightAnalytics:
-    """Main analytics engine for flight data"""
-    
-    def __init__(self):
+    def __init__(self, region='us-east-1'):
         """Initialize AWS clients"""
         try:
-            self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-            self.s3 = boto3.client('s3', region_name='us-east-1')
-            self.table = self.dynamodb.Table('flights-realtime-dev')
-            self.bucket = 'flights-data-lake-amruta'
+            self.dynamodb = boto3.resource('dynamodb', region_name=region)
+            self.s3 = boto3.client('s3', region_name=region)
             logger.info("✅ AWS clients initialized successfully")
         except Exception as e:
-            logger.error(f"❌ Failed to initialize AWS clients: {e}")
+            logger.error(f"❌ Error initializing AWS clients: {e}")
             raise
-    
+
     def fetch_flight_data(self, days=7):
-        """Fetch flight data from DynamoDB for last N days"""
+        """Fetch flight data from DynamoDB"""
         try:
             logger.info(f"📊 Fetching flight data for last {days} days...")
             
-            response = self.table.scan()
-            items = response.get('Items', [])
+            # Try to get table
+            table = self.dynamodb.Table('flight_data')
             
-            if not items:
-                logger.warning("⚠️ No data found in DynamoDB")
+            # Scan the table
+            response = table.scan()
+            
+            if not response.get('Items'):
+                logger.warning("⚠️ No data available in DynamoDB")
                 return pd.DataFrame()
             
-            df = pd.DataFrame(items)
+            # Convert to DataFrame
+            df = pd.DataFrame(response['Items'])
+            logger.info(f"✅ Retrieved {len(df)} flights from DynamoDB")
             
-            # Convert delay_minutes to numeric
-            df['delay_minutes'] = pd.to_numeric(
-                df.get('delay_minutes', 0), 
-                errors='coerce'
-            ).fillna(0)
-            
-            logger.info(f"✅ Fetched {len(df)} flight records")
             return df
-        
-        except Exception as e:
-            logger.error(f"❌ Error fetching flight data: {e}")
+            
+        except ClientError as e:
+            if e.response['Error']['Code'] == 'ResourceNotFoundException':
+                logger.error(f"❌ DynamoDB table not found. Available tables:")
+                try:
+                    tables = self.dynamodb.meta.client.list_tables()
+                    logger.info(f"Available tables: {tables['TableNames']}")
+                except:
+                    pass
+            else:
+                logger.error(f"❌ Error fetching flight data: {e}")
             return pd.DataFrame()
-    
-    def airline_performance(self, df):
-        """Analyze performance by airline"""
-        try:
-            if df.empty:
-                logger.warning("⚠️ No data for airline analysis")
-                return {}
-            
-            logger.info("✈️ Analyzing airline performance...")
-            
-            airline_stats = df.groupby('airline').agg({
-                'flight_id': 'count',
-                'delay_minutes': ['mean', 'max', 'min'],
-                'status': lambda x: (x == 'on time').sum()
-            }).round(2)
-            
-            airline_stats.columns = ['total_flights', 'avg_delay', 'max_delay', 'min_delay', 'on_time_count']
-            
-            # Calculate percentages
-            airline_stats['on_time_rate'] = (
-                airline_stats['on_time_count'] / airline_stats['total_flights'] * 100
-            ).round(2)
-            
-            airline_stats['delay_rate'] = (
-                (airline_stats['total_flights'] - airline_stats['on_time_count']) / 
-                airline_stats['total_flights'] * 100
-            ).round(2)
-            
-            # Sort by total flights
-            airline_stats = airline_stats.sort_values('total_flights', ascending=False)
-            
-            logger.info(f"✅ Analyzed {len(airline_stats)} airlines")
-            return airline_stats.to_dict()
-        
         except Exception as e:
-            logger.error(f"❌ Error in airline analysis: {e}")
-            return {}
-    
-    def route_performance(self, df, top_n=10):
-        """Analyze performance by route"""
+            logger.error(f"❌ Unexpected error fetching data: {e}")
+            return pd.DataFrame()
+
+    def analyze_data(self, df):
+        """Perform analytics on flight data"""
         try:
             if df.empty:
-                logger.warning("⚠️ No data for route analysis")
-                return {}
+                logger.warning("⚠️ No data to analyze")
+                return None
             
-            logger.info(f"🗺️ Analyzing top {top_n} routes...")
+            logger.info("🔍 Analyzing flight data...")
             
-            route_stats = df.groupby(['departure', 'arrival']).agg({
-                'flight_id': 'count',
-                'delay_minutes': ['mean', 'max'],
-                'status': lambda x: (x == 'delayed').sum()
-            }).round(2)
-            
-            route_stats.columns = ['total_flights', 'avg_delay', 'max_delay', 'delayed_count']
-            
-            # Sort by total flights and get top N
-            route_stats = route_stats.sort_values('total_flights', ascending=False).head(top_n)
-            
-            logger.info(f"✅ Analyzed {len(route_stats)} routes")
-            return route_stats.to_dict()
-        
-        except Exception as e:
-            logger.error(f"❌ Error in route analysis: {e}")
-            return {}
-    
-    def delay_analysis(self, df):
-        """Analyze delay patterns"""
-        try:
-            if df.empty:
-                logger.warning("⚠️ No data for delay analysis")
-                return {}
-            
-            logger.info("📊 Analyzing delay patterns...")
-            
-            stats = {
+            analytics = {
                 'total_flights': int(len(df)),
-                'on_time_flights': int(len(df[df['status'] == 'on time'])),
-                'delayed_flights': int(len(df[df['status'] == 'delayed'])),
-                'cancelled_flights': int(len(df[df['status'] == 'cancelled'])),
-                'avg_delay_minutes': float(df['delay_minutes'].mean()),
-                'max_delay_minutes': float(df['delay_minutes'].max()),
-                'min_delay_minutes': float(df['delay_minutes'].min()),
-                'median_delay_minutes': float(df['delay_minutes'].median()),
-                'on_time_rate_percent': float(
-                    (len(df[df['status'] == 'on time']) / len(df) * 100)
-                ),
-                'delay_rate_percent': float(
-                    (len(df[df['status'] == 'delayed']) / len(df) * 100)
-                ),
-                'cancellation_rate_percent': float(
-                    (len(df[df['status'] == 'cancelled']) / len(df) * 100)
-                )
+                'analysis_timestamp': datetime.now().isoformat(),
+                'by_airline': {},
+                'by_status': {},
+                'by_route': {},
             }
             
-            logger.info(f"✅ Delay analysis complete")
-            return stats
-        
+            # Analyze by airline
+            if 'airline' in df.columns:
+                airline_counts = df['airline'].value_counts().to_dict()
+                analytics['by_airline'] = {str(k): int(v) for k, v in airline_counts.items()}
+                logger.info(f"✅ Airlines: {analytics['by_airline']}")
+            
+            # Analyze by status
+            if 'status' in df.columns:
+                status_counts = df['status'].value_counts().to_dict()
+                analytics['by_status'] = {str(k): int(v) for k, v in status_counts.items()}
+                logger.info(f"✅ Status: {analytics['by_status']}")
+            
+            # Analyze by route
+            if 'departure' in df.columns and 'arrival' in df.columns:
+                df['route'] = df['departure'].astype(str) + ' → ' + df['arrival'].astype(str)
+                route_counts = df['route'].value_counts().to_dict()
+                analytics['by_route'] = {str(k): int(v) for k, v in route_counts.items()}
+                logger.info(f"✅ Routes: {analytics['by_route']}")
+            
+            return analytics
+            
         except Exception as e:
-            logger.error(f"❌ Error in delay analysis: {e}")
-            return {}
-    
-    def temporal_analysis(self, df):
-        """Analyze patterns by time"""
+            logger.error(f"❌ Error analyzing data: {e}")
+            return None
+
+    def save_report(self, analytics, bucket='flights-data-lake-amruta-2025'):
+        """Save analytics report to S3"""
         try:
-            if df.empty:
-                logger.warning("⚠️ No data for temporal analysis")
-                return {}
+            if not analytics:
+                logger.warning("⚠️ No analytics to save")
+                return False
             
-            logger.info("🕐 Analyzing temporal patterns...")
+            timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            key = f'analytics/reports/flight_analytics_{timestamp}.json'
             
-            # This is placeholder - would need timestamp column in data
-            stats = {
-                'analysis_performed': True,
-                'timestamp': datetime.now().isoformat()
-            }
-            
-            logger.info(f"✅ Temporal analysis complete")
-            return stats
-        
-        except Exception as e:
-            logger.error(f"❌ Error in temporal analysis: {e}")
-            return {}
-    
-    def generate_report(self, df):
-        """Generate comprehensive report"""
-        try:
-            logger.info("📋 Generating comprehensive report...")
-            
-            report = {
-                'generated_at': datetime.now().isoformat(),
-                'report_period': f"Last 7 days",
-                'summary': self.delay_analysis(df),
-                'airline_performance': self.airline_performance(df),
-                'route_performance': self.route_performance(df),
-                'temporal_patterns': self.temporal_analysis(df)
-            }
-            
-            logger.info("✅ Report generated successfully")
-            return report
-        
-        except Exception as e:
-            logger.error(f"❌ Error generating report: {e}")
-            return {}
-    
-    def save_report_to_s3(self, report):
-        """Save report to S3"""
-        try:
-            logger.info("💾 Saving report to S3...")
-            
-            date = datetime.now().strftime('%Y-%m-%d')
-            key = f'analytics/reports/{date}_analytics_report.json'
+            logger.info(f"💾 Saving report to S3: s3://{bucket}/{key}")
             
             self.s3.put_object(
-                Bucket=self.bucket,
+                Bucket=bucket,
                 Key=key,
-                Body=json.dumps(report, indent=2, default=str),
+                Body=json.dumps(analytics, indent=2),
                 ContentType='application/json'
             )
             
-            logger.info(f"✅ Report saved to s3://{self.bucket}/{key}")
-            return key
-        
+            logger.info(f"✅ Report saved successfully")
+            return True
+            
+        except ClientError as e:
+            logger.error(f"❌ Error saving to S3: {e}")
+            return False
         except Exception as e:
-            logger.error(f"❌ Error saving report to S3: {e}")
-            return None
+            logger.error(f"❌ Unexpected error saving report: {e}")
+            return False
+
+def main():
+    """Main execution"""
+    logger.info("=" * 60)
+    logger.info("🚀 FLIGHT ANALYTICS ENGINE STARTED")
+    logger.info("=" * 60)
     
-    def save_report_to_csv(self, df):
-        """Save data to CSV in S3"""
-        try:
-            logger.info("📊 Saving data to CSV...")
-            
-            date = datetime.now().strftime('%Y-%m-%d')
-            key = f'analytics/data/{date}_flights.csv'
-            
-            csv_buffer = df.to_csv(index=False)
-            
-            self.s3.put_object(
-                Bucket=self.bucket,
-                Key=key,
-                Body=csv_buffer,
-                ContentType='text/csv'
-            )
-            
-            logger.info(f"✅ CSV saved to s3://{self.bucket}/{key}")
-            return key
-        
-        except Exception as e:
-            logger.error(f"❌ Error saving CSV: {e}")
-            return None
-
-
-# ===== MAIN EXECUTION =====
-if __name__ == "__main__":
     try:
-        logger.info("=" * 60)
-        logger.info("🚀 FLIGHT ANALYTICS ENGINE STARTED")
-        logger.info("=" * 60)
-        
         # Initialize analytics
-        analytics = FlightAnalytics()
+        analytics_engine = FlightAnalytics()
         
         # Fetch data
-        df = analytics.fetch_flight_data(days=7)
+        df = analytics_engine.fetch_flight_data(days=7)
         
-        if not df.empty:
-            # Generate report
-            report = analytics.generate_report(df)
-            
-            # Save report
-            analytics.save_report_to_s3(report)
-            
-            # Save CSV
-            analytics.save_report_to_csv(df)
-            
-            logger.info("=" * 60)
-            logger.info("✅ ANALYTICS COMPLETE - All data saved to S3")
-            logger.info("=" * 60)
+        # Analyze
+        analytics = analytics_engine.analyze_data(df)
+        
+        # Save report
+        if analytics:
+            analytics_engine.save_report(analytics)
+            logger.info("✅ Analytics pipeline completed successfully")
         else:
-            logger.warning("⚠️ No data available for analysis")
-    
+            logger.warning("⚠️ Analytics pipeline completed with no data")
+        
     except Exception as e:
         logger.error(f"❌ Fatal error: {e}")
-        raise
+    
+    logger.info("=" * 60)
+    logger.info("🏁 FLIGHT ANALYTICS ENGINE FINISHED")
+    logger.info("=" * 60)
+
+if __name__ == '__main__':
+    main()
