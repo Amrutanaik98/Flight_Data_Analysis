@@ -44,7 +44,7 @@ def run_producer_script():
     
     try:
         result = subprocess.run(
-            ['python', PRODUCER_SCRIPT],
+            ['python3', PRODUCER_SCRIPT],
             capture_output=True,
             text=True,
             timeout=600,
@@ -241,7 +241,7 @@ def run_analytics():
     
     try:
         result = subprocess.run(
-            ['python', ANALYTICS_SCRIPT],
+            ['python3', ANALYTICS_SCRIPT],
             capture_output=True,
             text=True,
             timeout=600,
@@ -274,7 +274,7 @@ def run_report_generator():
     
     try:
         result = subprocess.run(
-            ['python', REPORTS_SCRIPT],
+            ['python3', REPORTS_SCRIPT],
             capture_output=True,
             text=True,
             timeout=600,
