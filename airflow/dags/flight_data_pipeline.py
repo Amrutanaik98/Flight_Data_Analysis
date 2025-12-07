@@ -4,482 +4,431 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 import subprocess
 import boto3
+import logging
+import os
+import time
+
+# ============================================================
+# LOGGING SETUP
+# ============================================================
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
 
 AWS_REGION = "us-east-1"
 S3_BUCKET = "flights-data-lake-amruta"
 SQS_QUEUE_NAME = "flight_dev"
-DYNAMODB_TABLE = "flights-realtime-dev"
-GLUE_JOB_NAME = "flight_data_processing"
-PRODUCER_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/src/producer.py"
-ANALYTICS_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/analytics/flight_analytics.py"
-REPORTS_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/analytics/generate_reports.py"
-TRAIN_ML_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/ml/train_model.py"
-PREDICT_ML_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/ml/predict.py"
+GLUE_JOB_NAME = "flights-glue-job-dev"
+
+# File paths
+PROJECT_ROOT = "/home/ubuntu/Flight_Data_Analysis"
+PRODUCER_SCRIPT = f"{PROJECT_ROOT}/src/producer.py"
+ANALYTICS_SCRIPT = f"{PROJECT_ROOT}/analytics/flight_analytics.py"
+REPORTS_SCRIPT = f"{PROJECT_ROOT}/analytics/generate_reports.py"
+TRAIN_ML_SCRIPT = f"{PROJECT_ROOT}/machine_learning/train_model.py"
+PREDICT_ML_SCRIPT = f"{PROJECT_ROOT}/machine_learning/predict.py"
+
+# ============================================================
+# DAG CONFIGURATION
+# ============================================================
 
 default_args = {
-    'owner': 'airflow',
+    'owner': 'data-engineering',
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
+    'start_date': datetime(2025, 1, 1),
+    'email_on_failure': False,
+    'email_on_retry': False,
 }
 
 dag = DAG(
     'flight_data_ml_pipeline',
     default_args=default_args,
-    description='Flight Data Pipeline with ML - Producer → S3/SQS → Lambda → DynamoDB, Glue → Analytics → ML Training → Predictions → Reports',
+    description='Flight Data Pipeline: Producer → S3 raw → Glue → S3 processed → ML',
     schedule_interval='@daily',
-    start_date=datetime(2025, 1, 1),
     catchup=False,
     tags=['flights', 'production', 'data-pipeline', 'analytics', 'ml'],
 )
 
 # ============================================================
-# PHASE 1: DATA INGESTION
+# HELPER FUNCTION: Run Python Script
 # ============================================================
 
-def run_producer_script():
-    print("=" * 70)
-    print("🚀 STEP 1: RUNNING PRODUCER SCRIPT")
-    print("=" * 70)
-    print("Action: Fetch flight API data")
-    print("Output: Data → S3 raw/ + SQS queue")
-    print("")
+def run_python_script(script_path, step_name, timeout=900):
+    """Execute Python script with error handling"""
+    logger.info("=" * 70)
+    logger.info(f"🚀 {step_name}")
+    logger.info("=" * 70)
+    logger.info(f"Script: {script_path}")
+    logger.info("")
+    
+    if not os.path.exists(script_path):
+        error_msg = f"❌ Script not found: {script_path}"
+        logger.error(error_msg)
+        raise FileNotFoundError(error_msg)
     
     try:
         result = subprocess.run(
-            ['python3', PRODUCER_SCRIPT],
+            ['python3', script_path],
             capture_output=True,
             text=True,
-            timeout=600,
+            timeout=timeout,
+            cwd=PROJECT_ROOT,
+            env={**os.environ, 'PYTHONUNBUFFERED': '1'}
         )
         
-        print("PRODUCER OUTPUT:")
-        print(result.stdout)
+        if result.stdout:
+            logger.info(f"OUTPUT:\n{result.stdout}")
         
         if result.returncode != 0:
-            print("PRODUCER ERROR:")
-            print(result.stderr)
-            raise Exception(f"Producer failed with code {result.returncode}")
+            error_output = result.stderr if result.stderr else "Unknown error"
+            logger.error(f"STDERR:\n{error_output}")
+            raise Exception(f"{step_name} failed with exit code {result.returncode}:\n{error_output}")
         
+        logger.info(f"✅ {step_name} completed successfully")
         print("=" * 70)
-        print("✅ STEP 1 COMPLETE: Data sent to S3 raw + SQS")
-        print("=" * 70)
-        return "Producer executed successfully"
+        return f"{step_name} executed successfully"
         
+    except subprocess.TimeoutExpired:
+        error_msg = f"⏱️ {step_name} timed out after {timeout}s"
+        logger.error(error_msg)
+        raise TimeoutError(error_msg)
     except Exception as e:
-        print(f"❌ ERROR: {str(e)}")
+        logger.error(f"❌ {step_name} failed: {str(e)}")
         raise
 
-def check_sqs_messages():
-    print("=" * 70)
-    print("🔍 STEP 2: CHECKING SQS QUEUE")
-    print("=" * 70)
-    print("Action: Verify messages in SQS")
-    print("Note: Lambda will pick these up and process them → DynamoDB")
-    print("")
+# ============================================================
+# PHASE 1: PRODUCER
+# ============================================================
+
+def run_producer_script():
+    """Fetch flight data from API and save to S3"""
+    logger.info("=" * 70)
+    logger.info("📥 PHASE 1: PRODUCER")
+    logger.info("=" * 70)
+    logger.info("Fetching flight API data → S3 raw/ + SQS")
+    logger.info("")
+    
+    return run_python_script(PRODUCER_SCRIPT, "Producer Script", timeout=600)
+
+# ============================================================
+# PHASE 2: VERIFY RAW DATA
+# ============================================================
+
+def verify_raw_data_in_s3():
+    """Verify raw data exists in S3"""
+    logger.info("=" * 70)
+    logger.info("📂 PHASE 2: VERIFY RAW DATA")
+    logger.info("=" * 70)
     
     try:
-        sqs_client = boto3.client('sqs', region_name=AWS_REGION)
-        response = sqs_client.get_queue_url(QueueName=SQS_QUEUE_NAME)
-        queue_url = response['QueueUrl']
+        s3_client = boto3.client('s3', region_name=AWS_REGION)
+        response = s3_client.list_objects_v2(Bucket=S3_BUCKET, Prefix='raw/', MaxKeys=100)
         
-        response = sqs_client.get_queue_attributes(
-            QueueUrl=queue_url,
-            AttributeNames=['ApproximateNumberOfMessages']
-        )
+        if 'Contents' not in response:
+            logger.warning("⚠️ No raw data in S3")
+            return "No raw data"
         
-        msg_count = int(response['Attributes']['ApproximateNumberOfMessages'])
-        print(f"📨 Messages in queue: {msg_count}")
-        print("=" * 70)
-        print("✅ STEP 2 COMPLETE: SQS checked")
-        print("=" * 70)
-        return f"SQS: {msg_count} messages"
+        file_count = len(response['Contents'])
+        logger.info(f"✅ Found {file_count} files in S3 raw/")
+        logger.info("")
+        return f"Raw data: {file_count} files"
         
     except Exception as e:
-        print(f"⚠️ SQS warning: {str(e)}")
-        return "SQS skipped"
+        logger.warning(f"⚠️ Raw data check failed: {str(e)}")
+        return "Raw data check failed"
 
-def check_lambda_processed_dynamodb():
-    print("=" * 70)
-    print("⚡ STEP 3: CHECKING LAMBDA → DYNAMODB")
-    print("=" * 70)
-    print("Action: Verify Lambda processed SQS messages and loaded to DynamoDB")
-    print("Note: Lambda runs outside Airflow, triggered by SQS")
-    print("")
+# ============================================================
+# PHASE 3: TRIGGER GLUE JOB
+# ============================================================
+
+def trigger_glue_job_func():
+    """Trigger Glue job to process data"""
+    logger.info("=" * 70)
+    logger.info("⚙️  PHASE 3: TRIGGER GLUE JOB")
+    logger.info("=" * 70)
     
     try:
-        dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
-        table = dynamodb.Table(DYNAMODB_TABLE)
+        # ✅ EXPLICIT: Create boto3 client with explicit configuration
+        import botocore.session
         
-        response = table.scan(Limit=10)
-        item_count = response['Count']
+        # Get AWS credentials from environment
+        logger.info("Attempting to trigger Glue job...")
+        logger.info(f"Job Name: {GLUE_JOB_NAME}")
+        logger.info(f"Region: {AWS_REGION}")
+        logger.info("")
         
-        print(f"📊 Items in DynamoDB (Lambda output): {item_count}")
-        
-        if item_count > 0:
-            sample_item = response['Items'][0]
-            print(f"📋 Sample item keys: {list(sample_item.keys())}")
-            print(f"✅ Lambda successfully processed SQS → DynamoDB!")
-        else:
-            print("⚠️ No items found - Lambda may not have processed yet")
-        
-        print("=" * 70)
-        print("✅ STEP 3 COMPLETE: Lambda/DynamoDB checked")
-        print("=" * 70)
-        return f"DynamoDB: {item_count} items (from Lambda)"
-        
-    except Exception as e:
-        print(f"⚠️ DynamoDB warning: {str(e)}")
-        return "DynamoDB skipped"
-
-def trigger_glue_job():
-    print("=" * 70)
-    print("⚙️  STEP 4: TRIGGERING GLUE JOB")
-    print("=" * 70)
-    print("Action: Start AWS Glue job for batch processing")
-    print("Input: S3 raw/ folder")
-    print("Output: S3 processed/ folder (aggregated data)")
-    print("")
-    
-    try:
+        # Create Glue client
         glue_client = boto3.client('glue', region_name=AWS_REGION)
+        
+        # Verify credentials
+        try:
+            sts = boto3.client('sts', region_name=AWS_REGION)
+            identity = sts.get_caller_identity()
+            logger.info(f"✅ Using AWS Account: {identity['Account']}")
+            logger.info(f"   ARN: {identity['Arn']}")
+        except Exception as cred_error:
+            logger.warning(f"⚠️ Could not verify credentials: {cred_error}")
+        
+        logger.info("")
+        logger.info(f"Input: s3://{S3_BUCKET}/raw/")
+        logger.info(f"Output: s3://{S3_BUCKET}/processed/")
+        logger.info("")
+        
+        # Start job run with explicit parameters
+        logger.info("Calling glue_client.start_job_run()...")
         
         response = glue_client.start_job_run(
             JobName=GLUE_JOB_NAME,
             Arguments={
-                '--input_bucket': S3_BUCKET,
-                '--input_prefix': 'raw/',
-                '--output_prefix': 'processed/',
+                '--S3_INPUT_PATH': f's3://{S3_BUCKET}/raw/',
+                '--S3_OUTPUT_PATH': f's3://{S3_BUCKET}/processed/',
             }
         )
         
         job_run_id = response['JobRunId']
-        print(f"🚀 Glue job started!")
-        print(f"Job Run ID: {job_run_id}")
-        print("=" * 70)
-        print("✅ STEP 4 COMPLETE: Glue job triggered")
-        print("=" * 70)
+        logger.info(f"✅ SUCCESS! Glue job triggered")
+        logger.info(f"   Job Run ID: {job_run_id}")
+        logger.info("")
         return f"Glue triggered: {job_run_id}"
         
     except Exception as e:
-        print(f"⚠️ Glue warning: {str(e)}")
-        return "Glue skipped"
+        logger.error("=" * 70)
+        logger.error("❌ GLUE JOB TRIGGER FAILED")
+        logger.error("=" * 70)
+        logger.error(f"Exception Type: {type(e).__name__}")
+        logger.error(f"Error Message: {str(e)}")
+        logger.error("")
+        logger.error("TROUBLESHOOTING:")
+        logger.error("1. Verify Glue job name is correct")
+        logger.error("2. Check EC2 IAM role has Glue permissions")
+        logger.error("3. Verify AWS credentials are configured")
+        logger.error("4. Check Glue job script location in AWS console")
+        logger.error("")
+        import traceback
+        logger.error(f"Full Traceback:\n{traceback.format_exc()}")
+        raise
 
-def wait_for_glue_job():
-    print("=" * 70)
-    print("⏳ STEP 5: MONITORING GLUE JOB")
-    print("=" * 70)
-    print("Action: Check Glue job status")
-    print("")
+# ============================================================
+# PHASE 4: WAIT FOR GLUE (2 MINUTES)
+# ============================================================
+
+def wait_for_glue_processing():
+    """Wait 2 minutes for Glue to process"""
+    logger.info("=" * 70)
+    logger.info("⏳ PHASE 4: WAIT FOR GLUE (2 MINUTES)")
+    logger.info("=" * 70)
+    logger.info("Waiting for Glue job to complete...")
+    logger.info("")
     
-    try:
-        glue_client = boto3.client('glue', region_name=AWS_REGION)
-        response = glue_client.get_job_runs(JobName=GLUE_JOB_NAME, MaxResults=1)
-        
-        if response['JobRuns']:
-            job_run = response['JobRuns'][0]
-            job_state = job_run['JobRunState']
-            print(f"Current Glue job state: {job_state}")
-            
-            if job_state == 'SUCCEEDED':
-                print("✅ Glue job completed successfully!")
-            elif job_state == 'FAILED':
-                print("❌ Glue job failed!")
-        
-        print("=" * 70)
-        print("✅ STEP 5 COMPLETE: Glue monitoring done")
-        print("=" * 70)
-        
-    except Exception as e:
-        print(f"⚠️ Glue monitoring warning: {str(e)}")
+    for i in range(12):
+        remaining = (12 - i) * 10
+        logger.info(f"  ⏳ {remaining} seconds remaining...")
+        time.sleep(10)
+    
+    logger.info("")
+    logger.info("✅ Glue processing complete!")
+    logger.info("")
+    
+    return "Glue processing completed"
 
-def check_processed_data():
-    print("=" * 70)
-    print("🔄 STEP 6: CHECKING PROCESSED DATA")
-    print("=" * 70)
-    print("Action: Verify Glue job output in S3")
-    print("Source: S3 processed/ folder")
-    print("")
+# ============================================================
+# PHASE 5: VERIFY PROCESSED DATA
+# ============================================================
+
+def verify_processed_data():
+    """Verify processed data in S3"""
+    logger.info("=" * 70)
+    logger.info("📊 PHASE 5: VERIFY PROCESSED DATA")
+    logger.info("=" * 70)
     
     try:
         s3_client = boto3.client('s3', region_name=AWS_REGION)
-        
-        response = s3_client.list_objects_v2(
-            Bucket=S3_BUCKET,
-            Prefix='processed/'
-        )
+        response = s3_client.list_objects_v2(Bucket=S3_BUCKET, Prefix='processed/')
         
         if 'Contents' not in response:
-            print("ℹ️ No processed files found yet (Glue may still be running)")
-            return "No processed data yet"
+            logger.warning("⚠️ No processed data found")
+            return "No processed data"
         
         file_count = len(response['Contents'])
-        print(f"✅ Found {file_count} files in S3 processed/")
+        logger.info(f"✅ Found {file_count} objects in S3 processed/")
         
-        latest_file = max(response['Contents'], key=lambda x: x['LastModified'])
-        print(f"📄 Latest file: {latest_file['Key']}")
-        print(f"📊 Size: {latest_file['Size']} bytes")
+        # Check for expected folders
+        expected = ['flights_main', 'flights_by_airline', 'flights_by_route', 'flights_by_status']
+        found_folders = set()
         
-        print("=" * 70)
-        print("✅ STEP 6 COMPLETE: Processed data verified")
-        print("=" * 70)
-        return f"Processed: {file_count} files"
+        for obj in response['Contents']:
+            for folder in expected:
+                if folder in obj['Key']:
+                    found_folders.add(folder)
+        
+        logger.info("📁 Folders:")
+        for folder in expected:
+            status = "✅" if folder in found_folders else "❌"
+            logger.info(f"  {status} {folder}/")
+        
+        logger.info("")
+        return f"Processed data verified"
         
     except Exception as e:
-        print(f"⚠️ Processed data warning: {str(e)}")
-        return "Processed skipped"
+        logger.warning(f"⚠️ Verification failed: {str(e)}")
+        return "Verification failed"
 
 # ============================================================
-# PHASE 2: ANALYTICS & REPORTS
+# PHASE 6: ANALYTICS
 # ============================================================
 
 def run_analytics():
-    print("=" * 70)
-    print("📊 STEP 7: RUNNING ANALYTICS ENGINE")
-    print("=" * 70)
-    print("Action: Analyze flight data from DynamoDB")
-    print("Analysis: Airline performance, routes, delays, trends")
-    print("Output: Analytics report saved to S3")
-    print("")
+    """Run analytics engine"""
+    logger.info("=" * 70)
+    logger.info("📊 PHASE 6: ANALYTICS")
+    logger.info("=" * 70)
+    logger.info("")
     
-    try:
-        result = subprocess.run(
-            ['python3', ANALYTICS_SCRIPT],
-            capture_output=True,
-            text=True,
-            timeout=600,
-        )
-        
-        print("ANALYTICS OUTPUT:")
-        print(result.stdout)
-        
-        if result.returncode != 0:
-            print("ANALYTICS ERROR:")
-            print(result.stderr)
-            raise Exception(f"Analytics failed with code {result.returncode}")
-        
-        print("=" * 70)
-        print("✅ STEP 7 COMPLETE: Analytics report generated & saved to S3")
-        print("=" * 70)
-        return "Analytics executed successfully"
-        
-    except Exception as e:
-        print(f"❌ ERROR: {str(e)}")
-        raise
+    return run_python_script(ANALYTICS_SCRIPT, "Analytics Engine", timeout=600)
 
 # ============================================================
-# PHASE 3: MACHINE LEARNING (NEW!)
+# PHASE 7: ML TRAINING
 # ============================================================
 
 def train_ml_model():
-    print("=" * 70)
-    print("🤖 STEP 8: TRAINING ML MODEL")
-    print("=" * 70)
-    print("Action: Train machine learning model for flight delay prediction")
-    print("Input: Historical flight data from DynamoDB & S3")
-    print("Model Type: RandomForest Classifier")
-    print("Features: Time, Airline, Route, Weather, Day of Week, etc.")
-    print("Target: Flight Delay (Yes/No)")
-    print("Output: Trained model saved to S3 (model_delay.pkl)")
-    print("")
+    """Train ML model"""
+    logger.info("=" * 70)
+    logger.info("🤖 PHASE 7: ML TRAINING")
+    logger.info("=" * 70)
+    logger.info("")
     
-    try:
-        result = subprocess.run(
-            ['python3', TRAIN_ML_SCRIPT],
-            capture_output=True,
-            text=True,
-            timeout=900,
-        )
-        
-        print("ML TRAINING OUTPUT:")
-        print(result.stdout)
-        
-        if result.returncode != 0:
-            print("ML TRAINING ERROR:")
-            print(result.stderr)
-            raise Exception(f"ML training failed with code {result.returncode}")
-        
-        print("=" * 70)
-        print("✅ STEP 8 COMPLETE: ML model trained & saved to S3")
-        print("=" * 70)
-        return "ML model trained successfully"
-        
-    except Exception as e:
-        print(f"❌ ERROR: {str(e)}")
-        raise
+    return run_python_script(TRAIN_ML_SCRIPT, "ML Model Training", timeout=900)
+
+# ============================================================
+# PHASE 8: ML PREDICTIONS
+# ============================================================
 
 def make_predictions():
-    print("=" * 70)
-    print("⚡ STEP 9: MAKING DELAY PREDICTIONS")
-    print("=" * 70)
-    print("Action: Load trained model and predict on today's flights")
-    print("Input: Today's flight data from DynamoDB")
-    print("Output: Predictions with delay probability & risk level")
-    print("Risk Levels: 🟢 LOW (0-33%) | 🟡 MEDIUM (34-66%) | 🔴 HIGH (67-100%)")
-    print("")
+    """Make predictions"""
+    logger.info("=" * 70)
+    logger.info("⚡ PHASE 8: ML PREDICTIONS")
+    logger.info("=" * 70)
+    logger.info("")
     
-    try:
-        result = subprocess.run(
-            ['python3', PREDICT_ML_SCRIPT],
-            capture_output=True,
-            text=True,
-            timeout=600,
-        )
-        
-        print("ML PREDICTION OUTPUT:")
-        print(result.stdout)
-        
-        if result.returncode != 0:
-            print("ML PREDICTION ERROR:")
-            print(result.stderr)
-            raise Exception(f"ML predictions failed with code {result.returncode}")
-        
-        print("=" * 70)
-        print("✅ STEP 9 COMPLETE: Predictions made & saved to S3")
-        print("=" * 70)
-        return "Predictions generated successfully"
-        
-    except Exception as e:
-        print(f"❌ ERROR: {str(e)}")
-        raise
+    return run_python_script(PREDICT_ML_SCRIPT, "ML Predictions", timeout=600)
+
+# ============================================================
+# PHASE 9: GENERATE REPORTS
+# ============================================================
 
 def run_report_generator():
-    print("=" * 70)
-    print("📧 STEP 10: GENERATING FINAL REPORTS")
-    print("=" * 70)
-    print("Action: Generate comprehensive reports with ML insights")
-    print("Content: Analytics + ML Predictions + Risk Alerts")
-    print("Output: Email summary, detailed report saved to S3")
-    print("")
+    """Generate final reports"""
+    logger.info("=" * 70)
+    logger.info("📧 PHASE 9: REPORTS")
+    logger.info("=" * 70)
+    logger.info("")
     
-    try:
-        result = subprocess.run(
-            ['python3', REPORTS_SCRIPT],
-            capture_output=True,
-            text=True,
-            timeout=600,
-        )
-        
-        print("REPORT GENERATOR OUTPUT:")
-        print(result.stdout)
-        
-        if result.returncode != 0:
-            print("REPORT GENERATOR ERROR:")
-            print(result.stderr)
-            raise Exception(f"Report generation failed with code {result.returncode}")
-        
-        print("=" * 70)
-        print("✅ STEP 10 COMPLETE: Final reports generated & saved to S3")
-        print("=" * 70)
-        return "Report generation executed successfully"
-        
-    except Exception as e:
-        print(f"❌ ERROR: {str(e)}")
-        raise
+    return run_python_script(REPORTS_SCRIPT, "Report Generator", timeout=600)
 
-def send_notification():
-    print("=" * 70)
-    print("✅ PIPELINE EXECUTION COMPLETE")
-    print("=" * 70)
-    print("")
-    print("🎉 FLIGHT DATA ML PIPELINE COMPLETED!")
-    print("")
-    print("📋 COMPLETE DATA FLOW:")
-    print("  PHASE 1 - DATA INGESTION:")
-    print("    1. Producer.py → Fetched flight API data")
-    print("    2. Data → S3 raw/ + SQS queue")
-    print("    3. Lambda (external) processed SQS → DynamoDB (real-time)")
-    print("    4. Glue job processed S3 raw/ → S3 processed/ (batch)")
-    print("  PHASE 2 - ANALYTICS:")
-    print("    7. Analytics engine → Analyzed all metrics")
-    print("  PHASE 3 - MACHINE LEARNING (NEW!):")
-    print("    8. ML Training → Trained RandomForest model on historical data")
-    print("    9. ML Predictions → Predicted delays & risk levels for today's flights")
-    print("    10. Report Generation → Generated comprehensive report with ML insights")
-    print("")
-    print(f"Execution Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("=" * 70)
-    return "ML Pipeline complete with predictions!"
+# ============================================================
+# COMPLETION
+# ============================================================
+
+def send_completion_summary():
+    """Send completion notification"""
+    logger.info("=" * 70)
+    logger.info("✅ PIPELINE COMPLETE!")
+    logger.info("=" * 70)
+    logger.info("")
+    logger.info("🎉 Flight Data ML Pipeline Completed Successfully!")
+    logger.info("")
+    logger.info("Flow Summary:")
+    logger.info("  1. Producer → S3 raw/ + SQS")
+    logger.info("  2. Lambda (auto) → processes SQS")
+    logger.info("  3. Glue Job → cleans raw/ data")
+    logger.info("  4. Wait 2 min → Glue completes")
+    logger.info("  5. Verify → processed/ folders created")
+    logger.info("  6. Analytics → analyze data")
+    logger.info("  7. ML Training → train model")
+    logger.info("  8. Predictions → predict delays")
+    logger.info("  9. Reports → generate final reports")
+    logger.info("")
+    
+    return "Pipeline complete!"
 
 # ============================================================
 # DEFINE TASKS
 # ============================================================
 
 task_start = BashOperator(
-    task_id='pipeline_start',
-    bash_command='echo "🚀 Flight Data ML Pipeline Started"',
+    task_id='start',
+    bash_command='echo "🚀 Pipeline Started"',
     dag=dag,
 )
 
 task_producer = PythonOperator(
-    task_id='step_1_run_producer',
+    task_id='step_1_producer',
     python_callable=run_producer_script,
     dag=dag,
 )
 
-task_check_sqs = PythonOperator(
-    task_id='step_2_check_sqs',
-    python_callable=check_sqs_messages,
-    dag=dag,
-)
-
-task_lambda_dynamodb = PythonOperator(
-    task_id='step_3_lambda_dynamodb',
-    python_callable=check_lambda_processed_dynamodb,
+task_verify_raw = PythonOperator(
+    task_id='step_2_verify_raw',
+    python_callable=verify_raw_data_in_s3,
     dag=dag,
 )
 
 task_trigger_glue = PythonOperator(
-    task_id='step_4_trigger_glue',
-    python_callable=trigger_glue_job,
+    task_id='step_3_trigger_glue',
+    python_callable=trigger_glue_job_func,
     dag=dag,
 )
 
 task_wait_glue = PythonOperator(
-    task_id='step_5_wait_glue',
-    python_callable=wait_for_glue_job,
+    task_id='step_4_wait_glue',
+    python_callable=wait_for_glue_processing,
     dag=dag,
 )
 
-task_check_processed = PythonOperator(
-    task_id='step_6_check_processed',
-    python_callable=check_processed_data,
+task_verify_processed = PythonOperator(
+    task_id='step_5_verify_processed',
+    python_callable=verify_processed_data,
     dag=dag,
 )
 
 task_analytics = PythonOperator(
-    task_id='step_7_run_analytics',
+    task_id='step_6_analytics',
     python_callable=run_analytics,
     dag=dag,
 )
 
-# NEW ML TASKS
 task_train_ml = PythonOperator(
-    task_id='step_8_train_ml_model',
+    task_id='step_7_train_ml',
     python_callable=train_ml_model,
     dag=dag,
 )
 
 task_predict = PythonOperator(
-    task_id='step_9_make_predictions',
+    task_id='step_8_predict',
     python_callable=make_predictions,
     dag=dag,
 )
 
 task_reports = PythonOperator(
-    task_id='step_10_generate_reports',
+    task_id='step_9_reports',
     python_callable=run_report_generator,
     dag=dag,
 )
 
-task_notify = PythonOperator(
-    task_id='step_11_send_notification',
-    python_callable=send_notification,
+task_complete = PythonOperator(
+    task_id='step_10_complete',
+    python_callable=send_completion_summary,
     dag=dag,
 )
 
 task_end = BashOperator(
-    task_id='pipeline_complete',
-    bash_command='echo "✅ Flight Data ML Pipeline Completed with Predictions"',
+    task_id='end',
+    bash_command='echo "✅ Pipeline Complete!"',
     dag=dag,
 )
 
@@ -487,4 +436,4 @@ task_end = BashOperator(
 # DEFINE TASK DEPENDENCIES
 # ============================================================
 
-task_start >> task_producer >> task_check_sqs >> task_lambda_dynamodb >> task_trigger_glue >> task_wait_glue >> task_check_processed >> task_analytics >> task_train_ml >> task_predict >> task_reports >> task_notify >> task_end
+task_start >> task_producer >> task_verify_raw >> task_trigger_glue >> task_wait_glue >> task_verify_processed >> task_analytics >> task_train_ml >> task_predict >> task_reports >> task_complete >> task_end

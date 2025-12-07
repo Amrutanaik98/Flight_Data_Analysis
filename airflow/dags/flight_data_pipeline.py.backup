@@ -13,6 +13,8 @@ GLUE_JOB_NAME = "flight_data_processing"
 PRODUCER_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/src/producer.py"
 ANALYTICS_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/analytics/flight_analytics.py"
 REPORTS_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/analytics/generate_reports.py"
+TRAIN_ML_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/ml/train_model.py"
+PREDICT_ML_SCRIPT = "/home/ubuntu/Flight_Data_Analysis/ml/predict.py"
 
 default_args = {
     'owner': 'airflow',
@@ -21,13 +23,13 @@ default_args = {
 }
 
 dag = DAG(
-    'flight_data_pipeline',
+    'flight_data_ml_pipeline',
     default_args=default_args,
-    description='Flight Data Pipeline - Producer → S3/SQS → Lambda → DynamoDB, Glue → S3 Processed → Analytics → Reports',
-    schedule_interval='@daily',  # Run daily instead of every 30 minutes
+    description='Flight Data Pipeline with ML - Producer → S3/SQS → Lambda → DynamoDB, Glue → Analytics → ML Training → Predictions → Reports',
+    schedule_interval='@daily',
     start_date=datetime(2025, 1, 1),
     catchup=False,
-    tags=['flights', 'production', 'data-pipeline', 'analytics'],
+    tags=['flights', 'production', 'data-pipeline', 'analytics', 'ml'],
 )
 
 # ============================================================
@@ -227,7 +229,7 @@ def check_processed_data():
         return "Processed skipped"
 
 # ============================================================
-# PHASE 2: ANALYTICS & REPORTS (NEW!)
+# PHASE 2: ANALYTICS & REPORTS
 # ============================================================
 
 def run_analytics():
@@ -264,12 +266,89 @@ def run_analytics():
         print(f"❌ ERROR: {str(e)}")
         raise
 
+# ============================================================
+# PHASE 3: MACHINE LEARNING (NEW!)
+# ============================================================
+
+def train_ml_model():
+    print("=" * 70)
+    print("🤖 STEP 8: TRAINING ML MODEL")
+    print("=" * 70)
+    print("Action: Train machine learning model for flight delay prediction")
+    print("Input: Historical flight data from DynamoDB & S3")
+    print("Model Type: RandomForest Classifier")
+    print("Features: Time, Airline, Route, Weather, Day of Week, etc.")
+    print("Target: Flight Delay (Yes/No)")
+    print("Output: Trained model saved to S3 (model_delay.pkl)")
+    print("")
+    
+    try:
+        result = subprocess.run(
+            ['python3', TRAIN_ML_SCRIPT],
+            capture_output=True,
+            text=True,
+            timeout=900,
+        )
+        
+        print("ML TRAINING OUTPUT:")
+        print(result.stdout)
+        
+        if result.returncode != 0:
+            print("ML TRAINING ERROR:")
+            print(result.stderr)
+            raise Exception(f"ML training failed with code {result.returncode}")
+        
+        print("=" * 70)
+        print("✅ STEP 8 COMPLETE: ML model trained & saved to S3")
+        print("=" * 70)
+        return "ML model trained successfully"
+        
+    except Exception as e:
+        print(f"❌ ERROR: {str(e)}")
+        raise
+
+def make_predictions():
+    print("=" * 70)
+    print("⚡ STEP 9: MAKING DELAY PREDICTIONS")
+    print("=" * 70)
+    print("Action: Load trained model and predict on today's flights")
+    print("Input: Today's flight data from DynamoDB")
+    print("Output: Predictions with delay probability & risk level")
+    print("Risk Levels: 🟢 LOW (0-33%) | 🟡 MEDIUM (34-66%) | 🔴 HIGH (67-100%)")
+    print("")
+    
+    try:
+        result = subprocess.run(
+            ['python3', PREDICT_ML_SCRIPT],
+            capture_output=True,
+            text=True,
+            timeout=600,
+        )
+        
+        print("ML PREDICTION OUTPUT:")
+        print(result.stdout)
+        
+        if result.returncode != 0:
+            print("ML PREDICTION ERROR:")
+            print(result.stderr)
+            raise Exception(f"ML predictions failed with code {result.returncode}")
+        
+        print("=" * 70)
+        print("✅ STEP 9 COMPLETE: Predictions made & saved to S3")
+        print("=" * 70)
+        return "Predictions generated successfully"
+        
+    except Exception as e:
+        print(f"❌ ERROR: {str(e)}")
+        raise
+
 def run_report_generator():
     print("=" * 70)
-    print("📧 STEP 8: GENERATING & SENDING REPORTS")
+    print("📧 STEP 10: GENERATING FINAL REPORTS")
     print("=" * 70)
-    print("Action: Generate formatted reports from analytics")
-    print("Output: Email summary, text summary saved to S3")
+    print("Action: Generate comprehensive reports with ML insights")
+    print("Content: Analytics + ML Predictions + Risk Alerts")
+    print("Output: Email summary, detailed report saved to S3")
     print("")
     
     try:
@@ -289,7 +368,7 @@ def run_report_generator():
             raise Exception(f"Report generation failed with code {result.returncode}")
         
         print("=" * 70)
-        print("✅ STEP 8 COMPLETE: Reports generated & saved to S3")
+        print("✅ STEP 10 COMPLETE: Final reports generated & saved to S3")
         print("=" * 70)
         return "Report generation executed successfully"
         
@@ -302,21 +381,24 @@ def send_notification():
     print("✅ PIPELINE EXECUTION COMPLETE")
     print("=" * 70)
     print("")
-    print("🎉 FLIGHT DATA PIPELINE COMPLETED!")
+    print("🎉 FLIGHT DATA ML PIPELINE COMPLETED!")
     print("")
-    print("📋 Complete Data Flow:")
+    print("📋 COMPLETE DATA FLOW:")
     print("  PHASE 1 - DATA INGESTION:")
-    print("    1. Producer.py → Fetched API data")
+    print("    1. Producer.py → Fetched flight API data")
     print("    2. Data → S3 raw/ + SQS queue")
     print("    3. Lambda (external) processed SQS → DynamoDB (real-time)")
     print("    4. Glue job processed S3 raw/ → S3 processed/ (batch)")
-    print("  PHASE 2 - ANALYTICS & REPORTS:")
+    print("  PHASE 2 - ANALYTICS:")
     print("    7. Analytics engine → Analyzed all metrics")
-    print("    8. Report generator → Generated & sent reports")
+    print("  PHASE 3 - MACHINE LEARNING (NEW!):")
+    print("    8. ML Training → Trained RandomForest model on historical data")
+    print("    9. ML Predictions → Predicted delays & risk levels for today's flights")
+    print("    10. Report Generation → Generated comprehensive report with ML insights")
     print("")
     print(f"Execution Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
-    return "Pipeline complete with analytics!"
+    return "ML Pipeline complete with predictions!"
 
 # ============================================================
 # DEFINE TASKS
@@ -324,7 +406,7 @@ def send_notification():
 
 task_start = BashOperator(
     task_id='pipeline_start',
-    bash_command='echo "🚀 Flight Data Pipeline Started"',
+    bash_command='echo "🚀 Flight Data ML Pipeline Started"',
     dag=dag,
 )
 
@@ -364,28 +446,40 @@ task_check_processed = PythonOperator(
     dag=dag,
 )
 
-# NEW ANALYTICS TASKS
 task_analytics = PythonOperator(
     task_id='step_7_run_analytics',
     python_callable=run_analytics,
     dag=dag,
 )
 
+# NEW ML TASKS
+task_train_ml = PythonOperator(
+    task_id='step_8_train_ml_model',
+    python_callable=train_ml_model,
+    dag=dag,
+)
+
+task_predict = PythonOperator(
+    task_id='step_9_make_predictions',
+    python_callable=make_predictions,
+    dag=dag,
+)
+
 task_reports = PythonOperator(
-    task_id='step_8_generate_reports',
+    task_id='step_10_generate_reports',
     python_callable=run_report_generator,
     dag=dag,
 )
 
 task_notify = PythonOperator(
-    task_id='step_9_send_notification',
+    task_id='step_11_send_notification',
     python_callable=send_notification,
     dag=dag,
 )
 
 task_end = BashOperator(
     task_id='pipeline_complete',
-    bash_command='echo "✅ Flight Data Pipeline Completed with Analytics"',
+    bash_command='echo "✅ Flight Data ML Pipeline Completed with Predictions"',
     dag=dag,
 )
 
@@ -393,4 +487,4 @@ task_end = BashOperator(
 # DEFINE TASK DEPENDENCIES
 # ============================================================
 
-task_start >> task_producer >> task_check_sqs >> task_lambda_dynamodb >> task_trigger_glue >> task_wait_glue >> task_check_processed >> task_analytics >> task_reports >> task_notify >> task_end
+task_start >> task_producer >> task_check_sqs >> task_lambda_dynamodb >> task_trigger_glue >> task_wait_glue >> task_check_processed >> task_analytics >> task_train_ml >> task_predict >> task_reports >> task_notify >> task_end
