@@ -1,8 +1,7 @@
 # ✈️ Flight Data Analytics Pipeline
 
-A production-grade, enterprise-scale data pipeline for real-time flight data ingestion, processing, analytics, and visualization. Built with AWS, Apache Airflow, Streamlit, and Machine Learning.
+A production-grade, enterprise-scale data pipeline for real-time flight data ingestion, processing, analytics, and visualization. Built with AWS, Apache Airflow, Streamlit, Machine Learning, and advanced analytics.
 
-**Status:** 🟢 Active Development | Phase 2 Complete | Phase 3 In Progress
 
 ---
 
@@ -11,18 +10,21 @@ A production-grade, enterprise-scale data pipeline for real-time flight data ing
 - [Overview](#overview)
 - [Architecture](#architecture)
 - [Features](#features)
+- [Dashboard Visualizations](#dashboard-visualizations)
+- [Machine Learning](#machine-learning)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [Phases](#phases)
+- [Data Flow](#data-flow)
+- [Project Phases](#project-phases)
 - [Monitoring](#monitoring)
-- [Contributing](#contributing)
+- [Testing](#testing)
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project builds a **complete data pipeline** that:
 
@@ -30,19 +32,20 @@ This project builds a **complete data pipeline** that:
 2. **Processes** data using AWS Lambda (streaming) and AWS Glue (batch)
 3. **Stores** data in multiple AWS services (S3, DynamoDB, SQS)
 4. **Analyzes** flight patterns, delays, and performance metrics
-5. **Visualizes** insights via Streamlit dashboard
-6. **Orchestrates** everything using Apache Airflow on EC2
-7. **Alerts** on anomalies and delays in real-time
+5. **Predicts** flight delays using Machine Learning models (XGBoost, Random Forest)
+6. **Visualizes** insights via Streamlit dashboard with 15+ interactive visualizations
+7. **Orchestrates** everything using Apache Airflow on EC2
+8. **Alerts** on anomalies and delays in real-time
 
 **Perfect for:** Learning data engineering, portfolio projects, or production-ready systems.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-FLIGHT DATA PIPELINE - Data Flow
-================================
+FLIGHT DATA PIPELINE - Complete Data Flow
+==========================================
 
 PHASE 1: DATA INGESTION
 ┌──────────────┐
@@ -85,9 +88,9 @@ BATCH PROCESSING
 
 PHASE 2: ANALYTICS & VISUALIZATION
     │
-    ├─────────────────────────┐
-    │                         │
-    ▼                         ▼
+    ├──────────────────────────────┐
+    │                              │
+    ▼                              ▼
 ┌──────────────┐      ┌──────────────────┐
 │ Analytics    │      │ Streamlit        │
 │ Engine       │      │ Dashboard        │
@@ -95,7 +98,7 @@ PHASE 2: ANALYTICS & VISUALIZATION
 │ - Airline    │      │                  │
 │   Performance│      │ - Real-time KPIs │
 │ - Routes     │      │ - Interactive    │
-│ - Delays     │      │   Charts         │
+│ - Delays     │      │   Charts (15+)   │
 │ - Trends     │      │ - Data Tables    │
 └──────┬───────┘      └──────────────────┘
        │
@@ -105,19 +108,38 @@ PHASE 2: ANALYTICS & VISUALIZATION
    │ (S3)   │
    └────────┘
 
-ORCHESTRATION
+PHASE 3: MACHINE LEARNING
+    │
+    ▼
+┌────────────────────────────┐
+│ ML Models                  │
+│ - XGBoost                  │
+│ - Random Forest            │
+│ - Feature Engineering      │
+│ - Model Evaluation         │
+│ - Delay Prediction         │
+└────────┬───────────────────┘
+         │
+         ▼
+    ┌──────────────┐
+    │ Predictions  │
+    │ (S3 + API)   │
+    └──────────────┘
+
+ORCHESTRATION & MONITORING
 ┌──────────────────────────────────────┐
 │ Apache Airflow on EC2                │
 │ Port: 8080                           │
 │ - Runs daily                         │
 │ - Monitors all tasks                 │
 │ - Email alerts                       │
+│ - Real-time monitoring               │
 └──────────────────────────────────────┘
 ```
 
 ---
 
-## ✨ Features
+## Features
 
 ### Phase 1: Data Ingestion ✅
 - ✅ Real-time flight data from Aviation Stack API
@@ -127,33 +149,98 @@ ORCHESTRATION
 - ✅ AWS Glue batch processing
 
 ### Phase 2: Analytics & Reporting ✅
-- ✅ Real-time Streamlit dashboard with KPIs
+- ✅ Real-time Streamlit dashboard with 15+ KPIs
 - ✅ Airline performance analysis
 - ✅ Route optimization insights
 - ✅ Delay pattern analysis
 - ✅ Automated daily reports
 - ✅ Historical trend analysis
+- ✅ Interactive visualizations with Plotly & Pydeck
 
-### Phase 3: Advanced Analytics 🚧
-- 🔄 Machine Learning (delay prediction)
-- 🔄 Real-time alerts
-- 🔄 REST API
-- 🔄 Anomaly detection
+### Phase 3: Machine Learning ✅
+- ✅ XGBoost delay prediction model
+- ✅ Random Forest classifier
+- ✅ Feature engineering pipeline
+- ✅ Model training & evaluation
+- ✅ Real-time delay forecasting
+- ✅ Anomaly detection
+- ✅ REST API endpoints for predictions
 
-### Phase 4: Infrastructure 📅
-- 📋 Data warehouse (Redshift/BigQuery)
-- 📋 Mobile app (React Native/Flutter)
-- 📋 Web portal (React.js)
 
-### Phase 5: Enterprise 📅
-- 📋 Docker containerization
-- 📋 Kubernetes deployment
-- 📋 Security & compliance
-- 📋 Multi-source integration
 
 ---
 
-## 🛠️ Tech Stack
+## Dashboard Visualizations
+
+Your Streamlit dashboard includes:
+
+- **Real-time KPIs:** Total flights, on-time rate, average delay
+- **Airline Performance:** Comparison charts, ranking tables
+- **Route Analytics:** Most delayed routes, busiest corridors
+- **Delay Distribution:** Histograms, trend lines
+- **Geographic Map:** Flight locations with Pydeck
+- **Time-series Analysis:** Delays over time
+- **Prediction Results:** ML model forecasts
+- **Data Tables:** Detailed flight information
+- **Filter Controls:** Dynamic filtering by airline, route, date
+- **Alert Dashboard:** Real-time anomalies and warnings
+
+
+<img width="1826" height="803" alt="d02" src="https://github.com/user-attachments/assets/493b84cc-33c2-4ff2-ba74-8d5bffe750a5" />
+<img width="1803" height="827" alt="db03" src="https://github.com/user-attachments/assets/9e953901-7c38-47e7-82d7-7aa91dd15a9e" />
+<img width="1872" height="272" alt="Screenshot 2025-12-07 160403" src="https://github.com/user-attachments/assets/82f6d71c-334c-4982-8a9b-9233be3a8715" />
+<img width="1865" height="882" alt="Screenshot 2025-12-07 160519" src="https://github.com/user-attachments/assets/4dad5f8c-b211-4531-95e4-37c5eed71552" />
+<img width="1862" height="567" alt="Screenshot 2025-12-07 160542" src="https://github.com/user-attachments/assets/57a352eb-af13-4d75-85c6-b8463fea8bde" />
+<img width="1803" height="682" alt="Screenshot 2025-12-07 160606" src="https://github.com/user-attachments/assets/59351c34-ccba-49e2-b814-bc1933a89023" />
+
+
+
+
+
+## Machine Learning
+
+### Models Implemented
+
+**XGBoost Regressor**
+- Predicts flight delay duration (in minutes)
+- Features: Departure airport, arrival airport, airline, aircraft type, time of day
+- Accuracy: [Your accuracy metrics]
+- Model evaluation metrics: MAE, RMSE, R² score
+
+**Random Forest Classifier**
+- Classifies flights as "On-Time" or "Delayed" (>15 minutes)
+- Feature importance analysis
+- Precision, Recall, F1-score: [Your metrics]
+
+### Feature Engineering Pipeline
+- Time-based features: Hour, day of week, month, seasonality
+- Airport features: Historical delay patterns
+- Airline features: Performance history
+- Weather integration (when available)
+- Traffic congestion indicators
+
+### Model Performance
+- Training/validation split: 80/20
+- Cross-validation: 5-fold
+- Hyperparameter tuning: GridSearchCV
+- Regular retraining: Weekly schedule
+
+### Prediction API
+```bash
+# Get delay prediction
+curl -X POST http://34.195.227.103:5000/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "airline": "AA",
+    "scheduled_time": "14:00"
+  }'
+```
+
+---
+
+## Tech Stack
 
 ### Cloud Platform
 - **AWS:** EC2, S3, DynamoDB, SQS, Lambda, AWS Glue, CloudWatch, SNS
@@ -165,20 +252,28 @@ ORCHESTRATION
 - **Pandas** - Data manipulation
 - **boto3** - AWS SDK
 
+### Machine Learning
+- **XGBoost** - Gradient boosting
+- **Scikit-learn** - ML algorithms & preprocessing
+- **Random Forest** - Classification
+- **Joblib** - Model serialization
+- **MLflow** - Experiment tracking (optional)
+
 ### Frontend & Visualization
 - **Streamlit** - Real-time dashboard
 - **Plotly** - Interactive charts
 - **Pydeck** - Geospatial visualization
+- **Flask** - REST API
 
 ### Development & Deployment
 - **Git/GitHub** - Version control
 - **Terraform** - Infrastructure as Code
-- **Docker** - Containerization (Phase 5)
-- **Kubernetes** - Orchestration (Phase 5)
+- **AWS CLI** - Cloud management
+- **Pytest** - Testing
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - AWS Account with free tier eligibility
@@ -226,11 +321,9 @@ terraform init
 terraform apply
 ```
 
-
-
 ---
 
-## 📦 Installation
+## Installation
 
 ### Local Development
 ```bash
@@ -249,6 +342,15 @@ python src/producer.py
 
 # Run analytics
 python analytics/flight_analytics.py
+
+# Train ML models
+python ml/train_models.py
+
+# Run predictions
+python ml/predictions.py
+
+# Run REST API
+python ml/api.py --port 5000
 
 # Run dashboard
 streamlit run dashboard/dashboard.py --server.port 8055
@@ -274,7 +376,7 @@ airflow webserver --port 8080 > /tmp/webserver.log 2>&1 &
 
 ---
 
-## 💻 Usage
+## Usage
 
 ### Run Pipeline
 
@@ -308,9 +410,25 @@ python analytics/generate_reports.py
 aws s3 ls s3://flights-data-lake-amruta/analytics/reports/
 ```
 
+### Use Machine Learning Models
+
+```bash
+# Train models
+python ml/train_models.py
+
+# Make predictions
+python ml/predictions.py --flight-id FL123
+
+# Start prediction API
+python ml/api.py --port 5000
+
+# Check model metrics
+python ml/evaluate_models.py
+```
+
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 flight-data-analysis/
@@ -326,6 +444,16 @@ flight-data-analysis/
 │   ├── __init__.py
 │   ├── reports/                 # Generated reports
 │   └── data/                    # Processed data
+│
+├── ml/
+│   ├── train_models.py          # Model training
+│   ├── predictions.py           # Make predictions
+│   ├── api.py                   # Flask REST API
+│   ├── evaluate_models.py       # Model evaluation
+│   ├── feature_engineering.py   # Feature pipeline
+│   ├── models/                  # Trained models (joblib)
+│   ├── data/                    # Training data
+│   └── requirements.txt
 │
 ├── dashboard/
 │   ├── dashboard.py             # Main Streamlit app
@@ -352,22 +480,24 @@ flight-data-analysis/
 ├── tests/
 │   ├── test_producer.py
 │   ├── test_analytics.py
+│   ├── test_ml_models.py
 │   └── test_api.py
 │
 ├── docs/
 │   ├── ARCHITECTURE.md
 │   ├── DEPLOYMENT.md
-│   └── SETUP.md
+│   ├── SETUP.md
+│   └── ML_GUIDE.md
 │
 ├── README.md
 ├── .gitignore
 ├── requirements.txt
-└── Dockerfile
+└── screenshots/                 # Dashboard screenshots
 ```
 
 ---
 
-## 📊 Data Flow
+## Data Flow
 
 ```
 1. Producer fetches API data
@@ -384,53 +514,55 @@ flight-data-analysis/
    ↓
 7. Analytics engine analyzes
    ↓
-8. Reports generated
+8. ML models make predictions
    ↓
-9. Dashboard updates
+9. Reports generated
    ↓
-10. Alerts sent (if needed)
+10. Dashboard updates
+   ↓
+11. Alerts sent (if needed)
+   ↓
+12. API serves predictions
 ```
 
 ---
 
-## 📊 Phases
+## Project Phases
 
 ### ✅ Phase 1: Infrastructure (Complete)
 - AWS resources deployed
 - Terraform IaC ready
 - EC2 with Airflow running
+- Real-time data ingestion live
 
 ### ✅ Phase 2: Analytics & Reporting (Complete)
-- Streamlit dashboard live
+- Streamlit dashboard live with 15+ visualizations
 - Daily analytics running
 - Automated reports generated
+- Interactive charts and KPIs
 
-### 🔄 Phase 3: Advanced Analytics (In Progress)
-- ML delay prediction model
-- Real-time alert system
-- REST API endpoints
+### ✅ Phase 3: Machine Learning (Complete)
+- XGBoost delay prediction model
+- Random Forest classifier
+- Feature engineering pipeline
+- Model evaluation & metrics
+- REST API for predictions
+- Real-time forecasting
 
-### 📋 Phase 4: Data Infrastructure (Planned)
-- Data warehouse setup
-- Mobile app development
-- Web portal
 
-### 📋 Phase 5: Enterprise (Planned)
-- Docker containerization
-- Kubernetes deployment
-- Security & compliance
 
 ---
 
-## 📈 Monitoring
+## Monitoring
 
 ### Airflow Dashboard
-- **URL:** http://34.195.227.103:8080
 - **Features:** Task status, logs, scheduling, retries
 
 ### Streamlit Dashboard
-- **URL:** http://34.195.227.103:8055
-- **Features:** Real-time KPIs, charts, tables, trends
+- **Features:** Real-time KPIs, charts, tables, trends, predictions
+
+
+
 
 ### CloudWatch Logs
 ```bash
@@ -443,7 +575,7 @@ aws logs tail /aws-glue/flights-job-dev --follow
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -455,29 +587,24 @@ python src/producer_debug.py
 # Test analytics
 python analytics/flight_analytics.py
 
+# Test ML models
+python tests/test_ml_models.py
+
+# Test API
+python tests/test_api.py
+
 # Test dashboard
 streamlit run dashboard/dashboard_test.py
 ```
 
 ---
 
-## 🤝 Contributing
 
-1. Fork repository
-2. Create feature branch (`git checkout -b feature/YourFeature`)
-3. Commit changes (`git commit -m 'Add YourFeature'`)
-4. Push to branch (`git push origin feature/YourFeature`)
-5. Open Pull Request
+
 
 ---
 
-## 📝 License
-
-MIT License - See LICENSE file for details
-
----
-
-## 👩‍💼 Author
+## Author
 
 **Amruta Naik**
 - GitHub: [@Amrutanaik98](https://github.com/Amrutanaik98)
@@ -485,34 +612,26 @@ MIT License - See LICENSE file for details
 
 ---
 
-## 💬 Support
+## Support
 
 For issues or questions:
 1. Check [Documentation](docs/)
 2. Search [GitHub Issues](https://github.com/Amrutanaik98/flight-data-analysis/issues)
 3. Create new issue with details
 
----
-
-## 🎯 Next Steps
-
-1. ✅ Phase 2 Analytics
-2. 🔄 Phase 3 Machine Learning
-3. 📋 Phase 4 Data Infrastructure
-4. 🐳 Phase 5 Docker/Kubernetes
 
 ---
 
-## 📊 Project Statistics
+## Project Statistics
 
-- **Lines of Code:** 3,500+
+- **Lines of Code:** 5,000+
 - **AWS Services:** 8+
-- **Phases:** 5 (2 complete, 3 planned)
+- **Phases:** 4 (3 complete, 1 in progress)
 - **Analytics Metrics:** 20+
 - **Dashboard Visualizations:** 15+
+- **ML Models:** 2 (XGBoost, Random Forest)
+- **API Endpoints:** 5+
 
 ---
 
-**Last Updated:** November 26, 2025
-**Status:** 🟢 Active Development
-**Next Phase:** Phase 3 - Machine Learning
+**Last Updated:** December 7, 2025
